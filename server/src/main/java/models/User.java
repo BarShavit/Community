@@ -21,6 +21,13 @@ public class User {
     @Column(name = "isAdmin")
     private boolean isAdmin;
 
+    public User(String username, String password, String email, boolean isAdmin) throws NoSuchAlgorithmException {
+        this.username = username;
+        this.setPassword(password);
+        this.email = email;
+        this.isAdmin = isAdmin;
+    }
+
     public int getId() {
         return id;
     }

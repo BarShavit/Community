@@ -3,12 +3,14 @@
  */
 package community.server;
 
-public class App {
-    public String getGreeting() {
-        return "Hello world.";
-    }
+import database.DAL;
 
-    public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+import java.security.NoSuchAlgorithmException;
+
+public class App {
+    public static void main(String[] args) throws NoSuchAlgorithmException {
+        var dal = new DAL();
+
+        dal.getManager().close();
     }
 }
