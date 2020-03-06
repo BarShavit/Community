@@ -3,7 +3,11 @@
  */
 package community.server;
 
+import controllers.UsersController;
 import database.DAL;
+import io.javalin.Javalin;
+import managers.UsersManager;
+import models.User;
 
 import java.security.NoSuchAlgorithmException;
 
@@ -11,6 +15,12 @@ public class App {
     public static void main(String[] args) throws NoSuchAlgorithmException {
         var dal = new DAL();
 
-        dal.getManager().close();
+        var usersManager = new UsersManager(dal);
+
+        var app = Javalin.create();
+
+        var usersController = new UsersController(app, usersManager);
+
+        app.start(80);
     }
 }

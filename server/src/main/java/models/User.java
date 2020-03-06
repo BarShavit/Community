@@ -1,5 +1,7 @@
 package models;
 
+import com.google.gson.annotations.Expose;
+
 import javax.persistence.*;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -12,24 +14,28 @@ public class User {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Column(name = "username")
+    @Column(name = "username", length = 50, unique = true)
+    @Expose
     private String username;
     @Column(name = "password")
+    @Expose(serialize = false)
     private String password;
     @Column(name = "email")
+    @Expose
     private String email;
     @Column(name = "isAdmin")
+    @Expose
     private boolean isAdmin;
+
+    public User(){
+
+    }
 
     public User(String username, String password, String email, boolean isAdmin) throws NoSuchAlgorithmException {
         this.username = username;
         this.setPassword(password);
         this.email = email;
         this.isAdmin = isAdmin;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getUsername() {
