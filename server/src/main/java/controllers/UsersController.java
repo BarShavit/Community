@@ -5,8 +5,6 @@ import com.google.gson.GsonBuilder;
 import io.javalin.Javalin;
 import managers.UsersManager;
 import models.User;
-
-import java.lang.reflect.Modifier;
 import java.security.NoSuchAlgorithmException;
 
 import static io.javalin.apibuilder.ApiBuilder.*;
