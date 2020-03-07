@@ -4,10 +4,14 @@
 package community.server;
 
 import controllers.CategoriesController;
+import controllers.ResponsesController;
+import controllers.TopicsController;
 import controllers.UsersController;
 import database.DAL;
 import io.javalin.Javalin;
 import managers.CategoriesManager;
+import managers.ResponseManager;
+import managers.TopicsManager;
 import managers.UsersManager;
 
 public class App {
@@ -17,11 +21,15 @@ public class App {
 
         var usersManager = new UsersManager(dal);
         var categoriesManager = new CategoriesManager(dal);
+        var topicsManager = new TopicsManager(dal);
+        var responsesManager = new ResponseManager(dal);
 
         var app = Javalin.create();
 
         var usersController = new UsersController(app, usersManager);
         var categoriesController = new CategoriesController(app, categoriesManager);
+        var topicsController = new TopicsController(app, topicsManager);
+        var responseController = new ResponsesController(app, responsesManager);
 
         app.start(80);
     }
