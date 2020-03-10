@@ -9,6 +9,7 @@ import controllers.TopicsController;
 import controllers.UsersController;
 import database.DAL;
 import io.javalin.Javalin;
+import io.javalin.core.JavalinConfig;
 import managers.CategoriesManager;
 import managers.ResponseManager;
 import managers.TopicsManager;
@@ -24,7 +25,7 @@ public class App {
         var topicsManager = new TopicsManager(dal);
         var responsesManager = new ResponseManager(dal);
 
-        var app = Javalin.create();
+        var app = Javalin.create(JavalinConfig::enableCorsForAllOrigins);
 
         var usersController = new UsersController(app, usersManager);
         var categoriesController = new CategoriesController(app, categoriesManager);

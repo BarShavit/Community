@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { HeaderComponent } from './theme/header/header.component';
+import { CategoryPageModule } from './category-page/category-page.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HeaderComponent } from './theme/header/header.component';
     BrowserAnimationsModule,
     SharedModule,
     MatCardModule,
-    MatToolbarModule
+    MatToolbarModule,
+    CategoryPageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
