@@ -1,0 +1,9 @@
+.row-container{
+    background-color: rgb(113, 199, 252);
+    opacity: 0.7;
+}
+
+.submodule-row{
+    min-height: 30px !important;
+    height: 30px !important;
+}
