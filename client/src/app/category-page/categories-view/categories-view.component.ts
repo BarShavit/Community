@@ -8,7 +8,7 @@ import { CategoriesService } from '../services/categories.service';
 })
 export class CategoriesViewComponent implements OnInit {
 
-  constructor(private categoriesService : CategoriesService) { }
+  constructor(public categoriesService : CategoriesService) { }
 
   ngOnInit(): void {
   }

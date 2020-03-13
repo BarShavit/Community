@@ -1,0 +1,21 @@
+.category-card{
+    width: 30%;
+    display: inline-block;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    background-color: rgb(49, 49, 49);
+}
+
+.nowrap{
+    white-space: nowrap ;
+}
+
+.category-title{
+    justify-content: center;
+}
+
+.forum-logo{
+    height: 15px;
+    width: 15px;
+    vertical-align: bottom;
+}
