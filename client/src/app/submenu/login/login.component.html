@@ -1,0 +1,20 @@
+<form>
+    <mat-form-field appearance="fill" [formGroup]="form">
+        <mat-label>שם משתמש</mat-label>
+        <input matInput [errorStateMatcher]="matcher" formControlName="username">
+        <mat-error *ngIf="form.controls['username'].invalid">
+            נא להכניס שם משתמש.
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" [formGroup]="form">
+        <mat-label>סיסמא</mat-label>
+        <input type="password" matInput [errorStateMatcher]="matcher" formControlName="password">
+        <mat-error *ngIf="form.controls['password'].hasError('required')">
+            נא להכניס סיסמא.
+        </mat-error>
+    </mat-form-field>
+    <button mat-button cdkFocusInitial (click)="login()" [disabled]="!form.valid">התחבר</button>
+    <div *ngIf="!failedLogin" class="warning">
+        פרטי התחברות שגויים.
+    </div>
+</form>

@@ -28,8 +28,7 @@ export class RegisterComponent implements OnInit {
       'username': ['', [Validators.required]],
       'password': ['', [Validators.required]],
       'email': ['', [Validators.required, Validators.email]]
-    }
-      , {});
+    }, {});
   }
 
   ngOnInit(): void {
@@ -38,8 +37,8 @@ export class RegisterComponent implements OnInit {
   async register() {
     let newUser = new user();
     newUser.username = this.form.controls['username'].value;
-    newUser.password = this.form.controls['username'].value;
-    newUser.email = this.form.controls['username'].value;
+    newUser.password = this.form.controls['password'].value;
+    newUser.email = this.form.controls['email'].value;
     newUser.isAdmin = false; // doesn't matter
 
     this.failedRegistered = await this.usersSerivce.register(newUser);

@@ -13,31 +13,37 @@ public class UsersController {
     private Gson gson;
     private UsersManager manager;
 
-    public UsersController(Javalin server, UsersManager man){
+    public UsersController(Javalin server, UsersManager man) {
         manager = man;
 
         var gsonBuilder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
         gson = gsonBuilder.create();
 
-        server.routes(() -> path("users", () ->{
+        server.routes(() -> path("users", () -> {
             get("/:name", (ctx) -> {
                 var user = getUser(ctx.pathParam("name"));
-                if(user == null){
+                if (user == null) {
                     ctx.status(400);
                 } else {
                     ctx.result(gson.toJson(user));
                 }
             });
-            post("", (ctx) ->{
+            post("", (ctx) -> {
                 var succeed = add(gson.fromJson(ctx.body(), User.class));
-                if(succeed){
+                if (succeed) {
                     ctx.status(200);
                 } else {
                     ctx.status(400);
                 }
             });
-            put(":name/:pass", (ctx -> ctx.result(gson.toJson(
-                    login(ctx.pathParam("name"), ctx.pathParam("pass"))))));
+            put(":name/:pass", (ctx -> {
+                var succeed = login(ctx.pathParam("name"), ctx.pathParam("pass"));
+                if (succeed) {
+                    ctx.status(200);
+                } else {
+                    ctx.status(400);
+                }
+            }));
         }));
     }
 

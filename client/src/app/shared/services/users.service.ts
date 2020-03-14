@@ -23,14 +23,14 @@ export class UsersService {
   }
 
   login(user: string, pass: string): Promise<boolean> {
-
     return this.http.put(this.consts.serverUrl + "users/" + user + "/" + pass, null)
       .toPromise().then(() => {
         this.connected = true;
         this.storage.set(this.storageConnectionStatusName,
           JSON.stringify(true)).toPromise().then(() => { });
         return true;
-      }).catch(() => { return false; }).finally(() => {
+      },
+      () => { return false; }).finally(() => {
         return false;
       });
   }
@@ -41,8 +41,14 @@ export class UsersService {
       this.storage.set(this.storageConnectionStatusName,
         JSON.stringify(true)).toPromise().then(() => { })
       return true;
-    }).catch(() => {
+    }, () =>{
       return false;
     });
+  }
+
+  disconnect(){
+    this.connected = false;
+    this.storage.set(this.storageConnectionStatusName,
+      JSON.stringify(false)).toPromise().then(() => { })
   }
 }

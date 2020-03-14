@@ -2,7 +2,10 @@
     <mat-toolbar-row class="submodule-row">
       <span *ngIf="!usersService.connected">
         <button mat-button (click)="register()">הרשם</button>
-        <button mat-button>התחבר</button>
+        <button mat-button (click)="login()">התחבר</button>
+      </span>
+      <span *ngIf="usersService.connected">
+        <button mat-button (click)="disconnect()">התנתק</button>
       </span>
     </mat-toolbar-row>
 </mat-toolbar>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/shared/services/users.service';
 import { MatDialog } from '@angular/material/dialog';
 import { RegisterComponent } from '../register/register.component';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-submenu',
@@ -10,7 +11,7 @@ import { RegisterComponent } from '../register/register.component';
 })
 export class SubmenuComponent implements OnInit {
 
-  constructor(public usersService : UsersService, public dialog: MatDialog) { }
+  constructor(public usersService: UsersService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -24,5 +25,19 @@ export class SubmenuComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
+  }
+
+    login(): void {
+    const dialogRef = this.dialog.open(LoginComponent, {
+      width: '250px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
+  disconnect() {
+    this.usersService.disconnect();
   }
 }
