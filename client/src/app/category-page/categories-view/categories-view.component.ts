@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriesService } from '../services/categories.service';
+import { Router } from '@angular/router';
+import { forum } from 'src/app/shared/models/forum';
 
 @Component({
   selector: 'app-categories-view',
@@ -8,9 +10,13 @@ import { CategoriesService } from '../services/categories.service';
 })
 export class CategoriesViewComponent implements OnInit {
 
-  constructor(public categoriesService : CategoriesService) { }
+  constructor(public categoriesService : CategoriesService,
+    private router : Router) { }
 
   ngOnInit(): void {
   }
 
+  chooseForum(forum:forum){
+    this.router.navigate(['/forum'], {state: {data:forum}});
+  }
 }

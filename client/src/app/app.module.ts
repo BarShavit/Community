@@ -10,6 +10,7 @@ import { SharedModule } from './shared/shared.module';
 import { HeaderComponent } from './theme/header/header.component';
 import { CategoryPageModule } from './category-page/category-page.module';
 import { SubmenuModule } from './submenu/submenu.module';
+import { ForumViewModule } from './forum-view/forum-view.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { SubmenuModule } from './submenu/submenu.module';
     MatToolbarModule,
     CategoryPageModule,
     SubmenuModule,
+    ForumViewModule
   ],
   providers: [],
   bootstrap: [AppComponent]

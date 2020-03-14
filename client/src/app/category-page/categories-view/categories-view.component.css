@@ -19,3 +19,7 @@
     width: 15px;
     vertical-align: bottom;
 }
+
+.clickable{
+    cursor: pointer;
+}

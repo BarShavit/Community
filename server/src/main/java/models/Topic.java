@@ -17,7 +17,7 @@ public class Topic {
     @Column(name = "publishDate")
     private Date publishDate;
     @Column(name = "subject")
-    private Date subject;
+    private String subject;
     @Column(name = "body")
-    private Date body;
+    private String body;
 }

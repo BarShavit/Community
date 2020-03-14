@@ -1,0 +1,26 @@
+<mat-toolbar>
+    <mat-toolbar-row class="forum-row">
+        {{forum.name}}
+    </mat-toolbar-row>
+    <mat-toolbar-row class="description-row">
+        {{forum.description}}
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<table mat-table [dataSource]="topicService.topics[forum.id]" class="mat-elevation-z8 topics-table">
+    <ng-container matColumnDef="creator">
+        <th mat-header-cell *matHeaderCellDef> יוצר </th>
+        <td mat-cell *matCellDef="let element"> {{element.creator.username}} </td>
+    </ng-container>
+    <ng-container matColumnDef="subject">
+        <th mat-header-cell *matHeaderCellDef> נושא </th>
+        <td mat-cell *matCellDef="let element"> {{element.subject}} </td>
+    </ng-container>
+    <ng-container matColumnDef="publishdate">
+        <th mat-header-cell *matHeaderCellDef> תאריך יצירה </th>
+        <td mat-cell *matCellDef="let element"> {{element.publishDate}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

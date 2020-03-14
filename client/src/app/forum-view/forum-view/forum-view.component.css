@@ -1,0 +1,17 @@
+.forum-row{
+    background-color: rgb(44, 44, 44);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    min-height: 30px !important;
+    height: 30px !important;
+}
+
+.description-row{
+    background-color: rgb(49, 49, 49);
+    min-height: 30px !important;
+    height: 30px !important;
+}
+
+.topics-table{
+    width: 100%;
+}
