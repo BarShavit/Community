@@ -24,7 +24,7 @@ import { SubmenuModule } from './submenu/submenu.module';
     MatCardModule,
     MatToolbarModule,
     CategoryPageModule,
-    SubmenuModule
+    SubmenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

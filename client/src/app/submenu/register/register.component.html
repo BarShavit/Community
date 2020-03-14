@@ -1,1 +1,30 @@
-<p>register works!</p>
+<form>
+    <mat-form-field appearance="fill" [formGroup]="form">
+        <mat-label>שם משתמש</mat-label>
+        <input matInput [errorStateMatcher]="matcher" formControlName="username">
+        <mat-error *ngIf="form.controls['username'].invalid">
+            נא להכניס שם משתמש.
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" [formGroup]="form">
+        <mat-label>סיסמא</mat-label>
+        <input type="password" matInput [errorStateMatcher]="matcher" formControlName="password">
+        <mat-error *ngIf="form.controls['password'].hasError('required')">
+            נא להכניס סיסמא.
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" [formGroup]="form">
+        <mat-label>אימייל</mat-label>
+        <input matInput [errorStateMatcher]="matcher" placeholder="לדוגמה bla@gmail.com" formControlName="email">
+        <mat-error *ngIf="form.controls['email'].hasError('email') && !form.controls['email'].hasError('required')">
+            נא להכניס כתובת אימייל חוקית.
+        </mat-error>
+        <mat-error *ngIf="form.controls['email'].hasError('required')">
+            נא להכניס כתובת אימייל.
+        </mat-error>
+    </mat-form-field>
+    <button mat-button cdkFocusInitial (click)="register()" [disabled]="!form.valid">הרשם</button>
+    <mat-error *ngIf="!failedRegistered">
+        שם משתמש תפוס. נא לבחור שם משתמש אחר.
+    </mat-error>
+</form>
