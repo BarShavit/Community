@@ -1,0 +1,32 @@
+.subject-row{
+    background-color: rgb(67,177,244);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    min-height: 30px !important;
+    height: 30px !important;
+}
+
+.description-row{
+    background-color: rgb(49, 49, 49);
+}
+
+.avatar{
+    width:50px;
+    margin-left: 15px;
+}
+
+.response-creator{
+    min-height: 30px !important;
+    height: 30px !important;
+    background-color: rgb(49, 49, 49);
+}
+
+.response-avatar{
+    width:20px;
+    margin-left: 15px;
+}
+
+.divider{
+    border-top-color:white !important;
+    margin-bottom: 15px;
+}

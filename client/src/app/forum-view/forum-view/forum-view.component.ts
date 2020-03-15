@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { forum } from 'src/app/shared/models/forum';
 import { Router } from '@angular/router';
 import { TopicsService } from '../services/topics.service';
+import { topic } from 'src/app/shared/models/topic';
 
 @Component({
   selector: 'app-forum-view',
@@ -22,4 +23,7 @@ export class ForumViewComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  chooseTopic(topic:topic){
+    this.router.navigate(['/topic'], {state: {data:topic}});
+  }
 }

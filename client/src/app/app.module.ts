@@ -11,6 +11,7 @@ import { HeaderComponent } from './theme/header/header.component';
 import { CategoryPageModule } from './category-page/category-page.module';
 import { SubmenuModule } from './submenu/submenu.module';
 import { ForumViewModule } from './forum-view/forum-view.module';
+import { TopicViewModule } from './topic-view/topic-view.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ForumViewModule } from './forum-view/forum-view.module';
     MatToolbarModule,
     CategoryPageModule,
     SubmenuModule,
-    ForumViewModule
+    ForumViewModule,
+    TopicViewModule
   ],
   providers: [],
   bootstrap: [AppComponent]

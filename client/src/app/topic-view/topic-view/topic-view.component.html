@@ -1,0 +1,34 @@
+<mat-toolbar>
+    <mat-toolbar-row class="subject-row">
+        {{topic.subject}}
+    </mat-toolbar-row>
+    <mat-toolbar-row class="description-row">
+        <img class="avatar" src="assets/default_avatar.png">
+        <span>{{topic.creator.username}}</span>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-card>
+    <mat-card-content>
+        {{topic.body}}
+    </mat-card-content>
+</mat-card>
+
+<mat-divider class="divider"></mat-divider>
+
+<div *ngFor="let response of topicService.responses[topic.id]">
+    <mat-toolbar class="response-creator">
+        <mat-toolbar-row class="response-creator">
+            <img class="response-avatar" src="assets/default_avatar.png">
+            <span>{{response.creator.username}}</span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <mat-card>
+        <mat-card-content>
+            {{response.body}}
+        </mat-card-content>
+    </mat-card>
+
+    <mat-divider class="divider"></mat-divider>
+</div>
