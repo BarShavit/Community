@@ -26,4 +26,8 @@ export class ForumViewComponent implements OnInit {
   chooseTopic(topic:topic){
     this.router.navigate(['/topic'], {state: {data:topic}});
   }
+
+  newTopic(){
+    this.router.navigate(['/newtopic'], {state: {data:this.forum}});
+  }
 }

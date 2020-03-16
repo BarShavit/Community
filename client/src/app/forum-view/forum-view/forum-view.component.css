@@ -21,3 +21,7 @@
 .clickable{
     cursor: pointer;
 }
+
+.new-topic-button{
+    margin-bottom: 15px;
+}
