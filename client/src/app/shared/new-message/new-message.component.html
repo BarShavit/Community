@@ -25,17 +25,18 @@
     </mat-card-header>
 
     <mat-card-content>
-        <form>
+        <form [formGroup]="form">
             <mat-form-field class="subject" *ngIf="forumMode">
                 <mat-label>נושא</mat-label>
-                <input matInput>
+                <input matInput formControlName="subject">
             </mat-form-field>
-
-            <editor class="editor" apiKey="hp107oe2skng79pbcryiu6xw08pk3tbvsppop5dibciwf10v" [init]="{
+            <editor [formControl]="form.controls.body" class="editor"
+                apiKey="hp107oe2skng79pbcryiu6xw08pk3tbvsppop5dibciwf10v" [init]="{
                 menubar: false,
                 directionality: 'rtl',
                 skin: 'oxide-dark',
                 content_css: 'dark',
+                language: 'he_IL',
                 plugins: [
                   'advlist directionality autolink lists link image charmap print preview anchor',
                   'searchreplace visualblocks code fullscreen',
@@ -48,6 +49,6 @@
               }"></editor>
         </form>
 
-        <button mat-raised-button color="primary">צור</button>
+        <button mat-raised-button color="primary" (click)="done()">צור</button>
     </mat-card-content>
 </mat-card>
