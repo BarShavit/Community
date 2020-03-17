@@ -13,6 +13,7 @@ public class User {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Expose
     private int id;
     @Column(name = "username", length = 50, unique = true)
     @Expose
