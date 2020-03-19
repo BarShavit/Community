@@ -1,12 +1,15 @@
 <mat-toolbar>
     <mat-toolbar-row class="subject-row">
         {{topic.subject}}
+        <div class="left-container date">
+            {{topic.publishDate.toLocaleString()}}
+        </div>
     </mat-toolbar-row>
     <mat-toolbar-row class="description-row">
         <img class="avatar" src="assets/default_avatar.png">
         <span>{{topic.creator.username}}</span>
 
-        <div class="new-response-container">
+        <div class="left-container">
             <button mat-raised-button color="primary" class="new-topic-button" (click)="newResponse()">תגובה
                 חדשה</button>
         </div>
@@ -26,6 +29,9 @@
         <mat-toolbar-row class="response-creator">
             <img class="response-avatar" src="assets/default_avatar.png">
             <span>{{response.creator.username}}</span>
+            <div class="left-container date">
+                {{topic.publishDate.toLocaleString()}}
+            </div>
         </mat-toolbar-row>
     </mat-toolbar>
 

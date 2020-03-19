@@ -31,6 +31,10 @@
     margin-bottom: 15px;
 }
 
-.new-response-container{
+.left-container{
     margin-right: auto;
+}
+
+.date{
+    font-size: 14px;
 }
