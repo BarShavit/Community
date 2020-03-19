@@ -5,12 +5,17 @@
     <mat-toolbar-row class="description-row">
         <img class="avatar" src="assets/default_avatar.png">
         <span>{{topic.creator.username}}</span>
+
+        <div class="new-response-container">
+            <button mat-raised-button color="primary" class="new-topic-button" (click)="newResponse()">תגובה
+                חדשה</button>
+        </div>
     </mat-toolbar-row>
 </mat-toolbar>
 
 <mat-card>
     <mat-card-content>
-        {{topic.body}}
+        <div [innerHTML]="topic.body"></div>
     </mat-card-content>
 </mat-card>
 
@@ -26,7 +31,7 @@
 
     <mat-card>
         <mat-card-content>
-            {{response.body}}
+            <div [innerHTML]="response.body"></div>
         </mat-card-content>
     </mat-card>
 

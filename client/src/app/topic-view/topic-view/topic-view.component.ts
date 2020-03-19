@@ -20,5 +20,7 @@ export class TopicViewComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
+  newResponse(){
+    this.router.navigate(['/newresponse'], {state: {data:this.topic}});
+  }
 }
