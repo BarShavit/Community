@@ -30,4 +30,10 @@ public class TopicsManager {
                 "SELECT t FROM Topic t WHERE t.forum.id=:id")
                 .setParameter("id", forumId).getResultList();
     }
+
+    public Topic getTopic(int topicId){
+        return (Topic)dal.getManager().createQuery(
+                "SELECT t FROM Topic t WHERE t.id=:id")
+                .setParameter("id", topicId).getSingleResult();
+    }
 }

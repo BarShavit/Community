@@ -15,8 +15,11 @@ public class TopicsController {
 
         server.routes(() -> {
             path("topic", () -> {
-                get("/:forumId", (ctx) -> {
+                get("/all/:forumId", (ctx) -> {
                     ctx.result(gson.toJson(manager.getTopics(parseInt(ctx.pathParam("forumId")))));
+                });
+                get("/:id", (ctx) -> {
+                    ctx.result(gson.toJson(manager.getTopic(parseInt(ctx.pathParam("id")))));
                 });
                 post("", (ctx -> {
                     manager.add(gson.fromJson(ctx.body(), Topic.class));

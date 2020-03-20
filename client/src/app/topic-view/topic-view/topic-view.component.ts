@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { topic } from 'src/app/shared/models/topic';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ResponseService } from '../services/response.service';
+import { TopicsService } from '../services/topics.service';
 
 @Component({
   selector: 'app-topic-view',
@@ -10,17 +11,18 @@ import { ResponseService } from '../services/response.service';
 })
 export class TopicViewComponent implements OnInit {
 
-  topic : topic;
+  topic: topic;
 
-  constructor(private router : Router, public topicService: ResponseService) {
-    this.topic = this.router.getCurrentNavigation().extras.state["data"];
-    this.topicService.loadTopic(this.topic.id);
-   }
-
-  ngOnInit(): void {
+  constructor(private route: ActivatedRoute, private router: Router,
+    public responseService: ResponseService, private topicService: TopicsService) {
   }
 
-  newResponse(){
-    this.router.navigate(['/newresponse'], {state: {data:this.topic}});
+  async ngOnInit() {
+    this.topic = await this.topicService.getTopic(+this.route.snapshot.paramMap.get("id"));
+    this.responseService.loadTopic(this.topic.id);
+  }
+
+  newResponse() {
+    this.router.navigate(['/newresponse'], { state: { data: this.topic } });
   }
 }

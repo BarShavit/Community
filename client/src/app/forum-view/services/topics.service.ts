@@ -14,7 +14,7 @@ export class TopicsService {
 
   loadForum(forumId:number) {
     if(this.topics[forumId] == null){
-      this.http.get(this.consts.serverUrl + "topic/" + forumId).toPromise().then((data) =>{
+      this.http.get(this.consts.serverUrl + "topic/all/" + forumId).toPromise().then((data) =>{
         this.topics[forumId] = data;
         this.topics[forumId].sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime())
       });
