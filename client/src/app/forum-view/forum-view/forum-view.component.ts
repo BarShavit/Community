@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { TopicsService } from '../services/topics.service';
 import { topic } from 'src/app/shared/models/topic';
 import { ForumsService } from '../services/forums.service';
+import { UsersService } from 'src/app/shared/services/users.service';
 
 @Component({
   selector: 'app-forum-view',
@@ -15,8 +16,10 @@ export class ForumViewComponent implements OnInit {
   forum: forum;
   displayedColumns: string[] = ['creator', 'subject', 'publishdate'];
 
-  constructor(private router: Router, private route: ActivatedRoute, public topicService: TopicsService,
-    private forumService: ForumsService) {
+  constructor(private router: Router, private route: ActivatedRoute,
+    public topicService: TopicsService,
+    private forumService: ForumsService,
+    public userService: UsersService) {
   }
 
   async ngOnInit() {

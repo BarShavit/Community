@@ -1,4 +1,6 @@
-<button mat-raised-button color="primary" class="new-topic-button" (click)="newTopic()">צור נושא חדש</button>
+<button mat-raised-button color="primary" 
+class="new-topic-button" (click)="newTopic()"
+[disabled]="!userService.connected">צור נושא חדש</button>
 
 <mat-toolbar *ngIf="forum!=null">
     <mat-toolbar-row class="forum-row">

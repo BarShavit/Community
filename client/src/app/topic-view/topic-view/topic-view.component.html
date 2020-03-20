@@ -10,7 +10,8 @@
         <span>{{topic.creator.username}}</span>
 
         <div class="left-container">
-            <button mat-raised-button color="primary" class="new-topic-button" (click)="newResponse()">תגובה
+            <button mat-raised-button color="primary" class="new-topic-button" (click)="newResponse()"
+                [disabled]="!userService.connected">תגובה
                 חדשה</button>
         </div>
     </mat-toolbar-row>

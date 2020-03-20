@@ -3,6 +3,7 @@ import { topic } from 'src/app/shared/models/topic';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ResponseService } from '../services/response.service';
 import { TopicsService } from '../services/topics.service';
+import { UsersService } from 'src/app/shared/services/users.service';
 
 @Component({
   selector: 'app-topic-view',
@@ -14,7 +15,8 @@ export class TopicViewComponent implements OnInit {
   topic: topic;
 
   constructor(private route: ActivatedRoute, private router: Router,
-    public responseService: ResponseService, private topicService: TopicsService) {
+    public responseService: ResponseService, private topicService: TopicsService,
+    public userService: UsersService) {
   }
 
   async ngOnInit() {
