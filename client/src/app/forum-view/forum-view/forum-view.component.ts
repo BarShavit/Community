@@ -29,6 +29,6 @@ export class ForumViewComponent implements OnInit {
   }
 
   newTopic() {
-    this.router.navigate(['/newtopic'], { state: { data: this.forum } });
+    this.router.navigate(['/newtopic/', this.forum.id], { state: { data: this.forum } });
   }
 }
