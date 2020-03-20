@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'forum/:id', component: ForumViewComponent },
   { path: 'newtopic/:id', component: NewTopicComponent },
   { path: 'topic/:id', component: TopicViewComponent },
-  { path: 'newresponse', component: NewResponseComponent },
+  { path: 'newresponse/:id', component: NewResponseComponent },
   { path: '', redirectTo: '/categories_view', pathMatch: 'full' },
   { path: '**', redirectTo: '/categories_view', pathMatch: 'full' },
 ];

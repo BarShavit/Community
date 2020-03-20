@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UsersService } from 'src/app/shared/services/users.service';
 import { topic } from 'src/app/shared/models/topic';
 import { createResult } from 'src/app/shared/new-message/new-message.component';
 import { response } from 'src/app/shared/models/response';
 import { ResponseService } from '../services/response.service';
+import { TopicsService } from '../services/topics.service';
 
 @Component({
   selector: 'app-new-response',
@@ -16,11 +17,12 @@ export class NewResponseComponent implements OnInit {
   topic: topic;
 
   constructor(private router: Router, private userService: UsersService,
-    private responseService: ResponseService) {
-    this.topic = this.router.getCurrentNavigation().extras.state["data"];
+    private responseService: ResponseService, private topicService: TopicsService,
+    private route: ActivatedRoute) {
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    this.topic = await this.topicService.getTopic(+this.route.snapshot.paramMap.get("id"));
   }
 
   create(result: createResult) {
@@ -32,6 +34,6 @@ export class NewResponseComponent implements OnInit {
 
     this.responseService.add(res);
 
-    this.router.navigate(['/topic'], {state: {data:this.topic}});
+    this.router.navigate(['/topic/', this.topic.id], { state: { data: this.topic } });
   }
 }
