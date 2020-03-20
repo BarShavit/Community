@@ -1,6 +1,6 @@
 <button mat-raised-button color="primary" class="new-topic-button" (click)="newTopic()">צור נושא חדש</button>
 
-<mat-toolbar>
+<mat-toolbar *ngIf="forum!=null">
     <mat-toolbar-row class="forum-row">
         {{forum.name}}
     </mat-toolbar-row>
@@ -9,7 +9,7 @@
     </mat-toolbar-row>
 </mat-toolbar>
 
-<table mat-table [dataSource]="topicService.topics[forum.id]" class="mat-elevation-z8 topics-table">
+<table *ngIf="forum!=null" mat-table [dataSource]="topicService.topics[forum.id]" class="mat-elevation-z8 topics-table">
     <ng-container matColumnDef="creator">
         <th mat-header-cell *matHeaderCellDef> יוצר </th>
         <td mat-cell *matCellDef="let element"> {{element.creator.username}} </td>

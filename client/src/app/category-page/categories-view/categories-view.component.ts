@@ -17,6 +17,6 @@ export class CategoriesViewComponent implements OnInit {
   }
 
   chooseForum(forum:forum){
-    this.router.navigate(['/forum'], {state: {data:forum}});
+    this.router.navigate(['/forum/', forum.id]);
   }
 }

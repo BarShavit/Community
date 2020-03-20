@@ -3,17 +3,11 @@
  */
 package community.server;
 
-import controllers.CategoriesController;
-import controllers.ResponsesController;
-import controllers.TopicsController;
-import controllers.UsersController;
+import controllers.*;
 import database.DAL;
 import io.javalin.Javalin;
 import io.javalin.core.JavalinConfig;
-import managers.CategoriesManager;
-import managers.ResponseManager;
-import managers.TopicsManager;
-import managers.UsersManager;
+import managers.*;
 
 public class App {
     @SuppressWarnings("unused")
@@ -22,6 +16,7 @@ public class App {
 
         var usersManager = new UsersManager(dal);
         var categoriesManager = new CategoriesManager(dal);
+        var forumsManager = new ForumsManager(dal);
         var topicsManager = new TopicsManager(dal);
         var responsesManager = new ResponseManager(dal);
 
@@ -29,6 +24,7 @@ public class App {
 
         var usersController = new UsersController(app, usersManager);
         var categoriesController = new CategoriesController(app, categoriesManager);
+        var forumsController = new ForumsController(app, forumsManager);
         var topicsController = new TopicsController(app, topicsManager);
         var responseController = new ResponsesController(app, responsesManager);
 

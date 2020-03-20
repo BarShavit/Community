@@ -9,7 +9,7 @@ import { NewResponseComponent } from './topic-view/new-response/new-response.com
 
 const routes: Routes = [
   { path: 'categories_view', component: CategoriesViewComponent },
-  { path: 'forum', component: ForumViewComponent },
+  { path: 'forum/:id', component: ForumViewComponent },
   { path: 'newtopic', component: NewTopicComponent },
   { path: 'topic', component: TopicViewComponent },
   { path: 'newresponse', component: NewResponseComponent },
