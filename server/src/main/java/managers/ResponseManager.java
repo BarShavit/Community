@@ -1,15 +1,19 @@
 package managers;
 
+import configurations.SocketIOConstants;
 import database.DAL;
 import models.Response;
+import socketIO.ISocketIOSender;
 
 import java.util.List;
 
 public class ResponseManager {
     private DAL dal;
+    private ISocketIOSender socketIOSender;
 
-    public ResponseManager(DAL dal) {
+    public ResponseManager(DAL dal, ISocketIOSender s) {
         this.dal = dal;
+        this.socketIOSender = s;
     }
 
     @SuppressWarnings("unchecked")
@@ -25,5 +29,7 @@ public class ResponseManager {
         dal.getManager().persist(response);
 
         dal.getManager().getTransaction().commit();
+
+        socketIOSender.emitData(SocketIOConstants.NewResponseKey, response);
     }
 }

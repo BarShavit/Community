@@ -1,7 +1,9 @@
 package managers;
 
+import configurations.SocketIOConstants;
 import database.DAL;
 import models.Topic;
+import socketIO.ISocketIOSender;
 
 import java.util.List;
 
@@ -11,9 +13,11 @@ import java.util.List;
  */
 public class TopicsManager {
     private DAL dal;
+    private ISocketIOSender socketIOSender;
 
-    public TopicsManager(DAL d){
+    public TopicsManager(DAL d, ISocketIOSender s){
         dal = d;
+        socketIOSender = s;
     }
 
     public void add(Topic topic){
@@ -22,6 +26,8 @@ public class TopicsManager {
         dal.getManager().persist(topic);
 
         dal.getManager().getTransaction().commit();
+
+        socketIOSender.emitData(SocketIOConstants.NewTopicKey, topic);
     }
 
     @SuppressWarnings("unchecked")

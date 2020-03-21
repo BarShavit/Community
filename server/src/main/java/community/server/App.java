@@ -17,12 +17,14 @@ public class App {
     @SuppressWarnings("unused")
     public static void main(String[] args) throws FileNotFoundException {
         var dal = new DAL();
+        var socketIOConf = new SocketIOConfiguration().Read();
+        var socketIOServer = new SocketIOServer(socketIOConf);
 
         var usersManager = new UsersManager(dal);
         var categoriesManager = new CategoriesManager(dal);
         var forumsManager = new ForumsManager(dal);
-        var topicsManager = new TopicsManager(dal);
-        var responsesManager = new ResponseManager(dal);
+        var topicsManager = new TopicsManager(dal, socketIOServer);
+        var responsesManager = new ResponseManager(dal, socketIOServer);
 
         var app = Javalin.create(JavalinConfig::enableCorsForAllOrigins);
 
@@ -33,10 +35,9 @@ public class App {
         var responseController = new ResponsesController(app, responsesManager);
 
         // SocketIO
-        var socketIOConf = new SocketIOConfiguration().Read();
-        var socketIOServer = new SocketIOServer(socketIOConf);
         socketIOServer.start();
 
+        // Http server
         app.start(80);
     }
 }

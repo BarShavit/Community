@@ -5,7 +5,7 @@ import com.corundumstudio.socketio.SocketConfig;
 import com.google.gson.Gson;
 import configurations.SocketIOConfiguration;
 
-public class SocketIOServer {
+public class SocketIOServer implements ISocketIOSender{
     private SocketIOConfiguration configuration;
     private com.corundumstudio.socketio.SocketIOServer server;
     private Gson gson = new Gson();
