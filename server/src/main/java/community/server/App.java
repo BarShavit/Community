@@ -3,15 +3,19 @@
  */
 package community.server;
 
+import configurations.SocketIOConfiguration;
 import controllers.*;
 import database.DAL;
 import io.javalin.Javalin;
 import io.javalin.core.JavalinConfig;
 import managers.*;
+import socketIO.SocketIOServer;
+
+import java.io.FileNotFoundException;
 
 public class App {
     @SuppressWarnings("unused")
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         var dal = new DAL();
 
         var usersManager = new UsersManager(dal);
@@ -27,6 +31,11 @@ public class App {
         var forumsController = new ForumsController(app, forumsManager);
         var topicsController = new TopicsController(app, topicsManager);
         var responseController = new ResponsesController(app, responsesManager);
+
+        // SocketIO
+        var socketIOConf = new SocketIOConfiguration().Read();
+        var socketIOServer = new SocketIOServer(socketIOConf);
+        socketIOServer.start();
 
         app.start(80);
     }

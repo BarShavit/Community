@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="11.0.5" class="java.beans.XMLDecoder">
+ <object class="configurations.SocketIOConfiguration">
+  <void property="closeTimeout">
+   <int>30</int>
+  </void>
+  <void property="hostName">
+   <string>0.0.0.0</string>
+  </void>
+  <void property="port">
+   <int>8080</int>
+  </void>
+ </object>
+</java>
