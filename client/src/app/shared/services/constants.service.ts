@@ -5,7 +5,9 @@ import { Injectable } from '@angular/core';
 })
 export class ConstantsService {
 
-  serverUrl : string = "http://localhost/"
+  serverUrl: string = "http://localhost/";
+  newTopicKey = "new-topic";
+  newResponseKey = "new-response"
 
   constructor() { }
 }

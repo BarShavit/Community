@@ -25,6 +25,7 @@ public class SocketIOServer implements ISocketIOSender{
         conf.setSocketConfig(socketConfig);
 
         server = new com.corundumstudio.socketio.SocketIOServer(conf);
+        server.start();
 
         System.out.println(String.format(
                 "Started SocketIO server on %s:%s",

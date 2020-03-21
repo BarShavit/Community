@@ -8,6 +8,9 @@ import { EditorModule, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
 import { StorageModule } from '@ngx-pwa/local-storage';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+
+const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
 
 @NgModule({
   declarations: [NewMessageComponent],
@@ -22,7 +25,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
       IDBNoWrap: true,
     }),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SocketIoModule.forRoot(config)
   ],
   exports:[
     NewMessageComponent
