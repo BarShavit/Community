@@ -35,6 +35,7 @@ export class ForumViewComponent implements OnInit, OnDestroy {
     });
 
     this.topicService.loadForum(this.forum.id);
+    this.dataSource.data = this.topicService.topics[this.forum.id];
   }
 
   ngOnDestroy(){
