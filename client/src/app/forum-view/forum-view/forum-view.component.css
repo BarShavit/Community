@@ -25,3 +25,8 @@
 .new-topic-button{
     margin-bottom: 15px;
 }
+
+.topics-container{
+    max-height: 295px;
+    overflow: auto;
+}

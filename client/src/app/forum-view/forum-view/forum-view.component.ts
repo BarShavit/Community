@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { forum } from 'src/app/shared/models/forum';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TopicsService } from '../services/topics.service';
@@ -17,28 +17,38 @@ export class ForumViewComponent implements OnInit, OnDestroy {
 
   forum: forum;
   displayedColumns: string[] = ['creator', 'subject', 'publishdate'];
-  private updateSubscription:Subscription;
+  private updateSubscription: Subscription;
   dataSource = new MatTableDataSource<topic>();
+
+  public pageSize = 5;
+  public currentPage = 0;
+  public totalSize = 0;
+
 
   constructor(private router: Router, private route: ActivatedRoute,
     public topicService: TopicsService,
     private forumService: ForumsService,
-    public userService: UsersService,
-    private changeDetectorRefs: ChangeDetectorRef) {
+    public userService: UsersService) {
   }
 
   async ngOnInit() {
     this.forum = await this.forumService.getForum(+this.route.snapshot.paramMap.get("id"));
 
-    this.updateSubscription = this.topicService.updates().subscribe((data) =>{
+    this.updateSubscription = this.topicService.updates().subscribe((data) => {
       this.dataSource.data = data;
+      this.totalSize = data.length;
+      this.trimTopics();
     });
 
     this.topicService.loadForum(this.forum.id);
     this.dataSource.data = this.topicService.topics[this.forum.id];
+    if (this.topicService.topics[this.forum.id] != null) {
+      this.totalSize = this.topicService.topics[this.forum.id].length;
+      this.trimTopics();
+    }
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.updateSubscription.unsubscribe();
   }
 
@@ -52,5 +62,18 @@ export class ForumViewComponent implements OnInit, OnDestroy {
 
   trackById(index: number, item: topic) {
     return item.id;
+  }
+
+  handlePage(e: any) {
+    this.currentPage = e.pageIndex;
+    this.pageSize = e.pageSize;
+    this.trimTopics();
+  }
+
+  trimTopics() {
+    let end = (this.currentPage + 1) * this.pageSize;
+    let start = this.currentPage * this.pageSize;
+    let part = this.topicService.topics[this.forum.id].slice(start, end);
+    this.dataSource.data = part;
   }
 }
