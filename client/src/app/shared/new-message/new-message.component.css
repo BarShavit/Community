@@ -12,6 +12,12 @@
 }
 
 .editor{
-    height: 270px;
     width: 70%;
+    margin-bottom: 10px;
+}
+
+.warning{
+    font-family:Roboto, "Helvetica Neue", sans-serif;
+    color:red;
+    margin-bottom: 10px;
 }

@@ -29,9 +29,10 @@
             <mat-form-field class="subject" *ngIf="forumMode">
                 <mat-label>נושא</mat-label>
                 <input matInput formControlName="subject">
+                <mat-error>נא לכתוב נושא.</mat-error>
             </mat-form-field>
-            <editor [formControl]="form.controls.body" class="editor"
-                apiKey="hp107oe2skng79pbcryiu6xw08pk3tbvsppop5dibciwf10v" [init]="{
+            <editor [formControl]="form.controls.body" class="editor" (onFocusOut)="bodyCheck()"
+                (onChange)="bodyCheck()" apiKey="hp107oe2skng79pbcryiu6xw08pk3tbvsppop5dibciwf10v" [init]="{
                 menubar: false,
                 directionality: 'rtl',
                 skin: 'oxide-dark',
@@ -48,6 +49,9 @@
                   alignleft aligncenter alignright alignjustify | \
                   bullist numlist outdent indent | removeformat | help'
               }"></editor>
+            <div *ngIf="bodyError" class="warning">
+                נא לכתוב תוכן הודעה.
+            </div>
         </form>
 
         <button mat-raised-button color="primary" (click)="done()">צור</button>

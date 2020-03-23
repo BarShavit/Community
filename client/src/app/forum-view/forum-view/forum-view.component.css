@@ -30,3 +30,7 @@
     max-height: 295px;
     overflow: auto;
 }
+
+.main-background{
+    background-color: #1a1b1c;
+}

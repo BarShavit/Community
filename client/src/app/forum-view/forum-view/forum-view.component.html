@@ -1,7 +1,7 @@
 <button mat-raised-button color="primary" class="new-topic-button" (click)="newTopic()"
     [disabled]="!userService.connected">צור נושא חדש</button>
 
-<mat-toolbar *ngIf="forum!=null">
+<mat-toolbar class="main-background" *ngIf="forum!=null">
     <mat-toolbar-row class="forum-row">
         {{forum.name}}
     </mat-toolbar-row>
@@ -31,6 +31,7 @@
     </table>
 </div>
 
-<mat-paginator [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true" [length]="totalSize"
+<mat-paginator class="main-background" [pageSize]="pageSize"
+ [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true" [length]="totalSize"
     [pageIndex]="currentPage" (page)="handlePage($event)">
 </mat-paginator>

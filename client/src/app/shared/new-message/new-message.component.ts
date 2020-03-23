@@ -7,6 +7,7 @@ import { MyErrorStateMatcher } from 'src/app/submenu/register/register.component
 export class createResult {
   subject: string;
   body: string;
+
   constructor(s: string, body: string) {
     this.subject = s;
     this.body = body;
@@ -25,6 +26,7 @@ export class NewMessageComponent implements OnInit {
   @Input() forumMode: boolean;
   @Output() create = new EventEmitter<createResult>();
 
+  bodyError: boolean = false;
   form: FormGroup;
   matcher = new MyErrorStateMatcher();
 
@@ -46,5 +48,14 @@ export class NewMessageComponent implements OnInit {
 
   shouldShow(): boolean {
     return (this.forumMode && this.forum != null) || (!this.forumMode && this.topic != null);
+  }
+
+  bodyCheck() {
+    if (this.form.controls['body'].value == "" ||
+      this.form.controls['body'].value == null) {
+      this.bodyError = true;
+    } else{
+      this.bodyError = false;
+    }
   }
 }
