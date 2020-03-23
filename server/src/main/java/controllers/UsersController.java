@@ -52,6 +52,13 @@ public class UsersController {
     }
 
     private boolean add(User user) throws NoSuchAlgorithmException {
+        // Validations
+        if(user.getUsername() == null || user.getUsername().equals("") ||
+                user.getPassword() == null || user.getPassword().equals("") ||
+                user.getEmail() == null || user.getEmail().equals("")){
+            return false;
+        }
+
         return manager.add(user);
     }
 

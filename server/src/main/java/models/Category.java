@@ -16,19 +16,7 @@ public class Category {
     @OneToMany
     private List<Forum> forums = new ArrayList<>();
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getId() {
         return id;
-    }
-
-    public List<Forum> getForums() {
-        return forums;
     }
 }
