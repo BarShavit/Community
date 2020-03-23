@@ -23,7 +23,7 @@ public class App {
         var usersManager = new UsersManager(dal);
         var categoriesManager = new CategoriesManager(dal);
         var forumsManager = new ForumsManager(dal);
-        var topicsManager = new TopicsManager(dal, socketIOServer);
+        var topicsManager = new TopicsManager(dal, socketIOServer, usersManager, forumsManager);
         var responsesManager = new ResponseManager(dal, socketIOServer);
 
         var app = Javalin.create(JavalinConfig::enableCorsForAllOrigins);

@@ -20,4 +20,20 @@ public class Topic {
     private String subject;
     @Column(name = "body")
     private String body;
+
+    public Forum getForum() {
+        return forum;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public User getCreator() {
+        return creator;
+    }
 }

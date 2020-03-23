@@ -14,13 +14,23 @@ import java.util.List;
 public class TopicsManager {
     private DAL dal;
     private ISocketIOSender socketIOSender;
+    private UsersManager usersManager;
+    private ForumsManager forumManager;
 
-    public TopicsManager(DAL d, ISocketIOSender s){
-        dal = d;
-        socketIOSender = s;
+    public TopicsManager(DAL d, ISocketIOSender s, UsersManager usersManager, ForumsManager forumsManager){
+        this.dal = d;
+        this.socketIOSender = s;
+        this.usersManager = usersManager;
+        this.forumManager = forumsManager;
     }
 
-    public void add(Topic topic){
+    public boolean add(Topic topic){
+        if(usersManager.getUser(topic.getCreator().getId()) == null)
+            return false;
+
+        if(forumManager.getForum(topic.getForum().getId()) == null)
+            return false;
+
         dal.getManager().getTransaction().begin();
 
         dal.getManager().persist(topic);
@@ -28,6 +38,8 @@ public class TopicsManager {
         dal.getManager().getTransaction().commit();
 
         socketIOSender.emitData(SocketIOConstants.NewTopicKey, topic);
+
+        return true;
     }
 
     @SuppressWarnings("unchecked")

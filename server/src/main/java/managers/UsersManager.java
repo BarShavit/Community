@@ -35,6 +35,10 @@ public class UsersManager {
         return true;
     }
 
+    public User getUser(int id){
+        return dal.getManager().find(User.class, id);
+    }
+
     public User getUser(String name){
         var usersList = dal.getManager().createQuery("SELECT user FROM User user WHERE user.username=:name")
                 .setParameter("name", name).getResultList();
