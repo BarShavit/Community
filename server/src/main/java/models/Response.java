@@ -18,4 +18,16 @@ public class Response {
     private Date publishDate;
     @Column(name = "body")
     private String body;
+
+    public Topic getTopic() {
+        return topic;
+    }
+
+    public User getCreator() {
+        return creator;
+    }
+
+    public String getBody() {
+        return body;
+    }
 }

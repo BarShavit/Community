@@ -24,7 +24,7 @@ public class App {
         var categoriesManager = new CategoriesManager(dal);
         var forumsManager = new ForumsManager(dal);
         var topicsManager = new TopicsManager(dal, socketIOServer, usersManager, forumsManager);
-        var responsesManager = new ResponseManager(dal, socketIOServer);
+        var responsesManager = new ResponseManager(dal, socketIOServer, usersManager, topicsManager);
 
         var app = Javalin.create(JavalinConfig::enableCorsForAllOrigins);
 

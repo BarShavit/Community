@@ -25,12 +25,13 @@ public class TopicsManager {
     }
 
     public boolean add(Topic topic){
+        // Validations
         if(usersManager.getUser(topic.getCreator().getId()) == null)
             return false;
-
         if(forumManager.getForum(topic.getForum().getId()) == null)
             return false;
 
+        // Logic
         dal.getManager().getTransaction().begin();
 
         dal.getManager().persist(topic);

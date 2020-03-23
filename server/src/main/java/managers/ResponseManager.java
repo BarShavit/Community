@@ -10,10 +10,14 @@ import java.util.List;
 public class ResponseManager {
     private DAL dal;
     private ISocketIOSender socketIOSender;
+    private UsersManager usersManager;
+    private TopicsManager topicsManager;
 
-    public ResponseManager(DAL dal, ISocketIOSender s) {
+    public ResponseManager(DAL dal, ISocketIOSender s, UsersManager usersManager, TopicsManager topicsManager) {
         this.dal = dal;
         this.socketIOSender = s;
+        this.usersManager = usersManager;
+        this.topicsManager = topicsManager;
     }
 
     @SuppressWarnings("unchecked")
@@ -23,7 +27,14 @@ public class ResponseManager {
                 .setParameter("id", topicId).getResultList();
     }
 
-    public void add(Response response){
+    public boolean add(Response response){
+        // Validations
+        if(usersManager.getUser(response.getCreator().getId()) == null)
+            return false;
+        if(topicsManager.getTopic(response.getTopic().getId()) == null)
+            return false;
+
+        // Logic
         dal.getManager().getTransaction().begin();
 
         dal.getManager().persist(response);
@@ -31,5 +42,7 @@ public class ResponseManager {
         dal.getManager().getTransaction().commit();
 
         socketIOSender.emitData(SocketIOConstants.NewResponseKey, response);
+
+        return true;
     }
 }

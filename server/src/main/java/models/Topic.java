@@ -36,4 +36,8 @@ public class Topic {
     public User getCreator() {
         return creator;
     }
+
+    public int getId() {
+        return id;
+    }
 }
