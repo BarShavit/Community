@@ -22,4 +22,16 @@ public class ConversationMessage {
 
     @Column(name = "publishDate")
     private Date publishDate;
+
+    public Conversation getConversation() {
+        return conversation;
+    }
+
+    public User getCreator() {
+        return creator;
+    }
+
+    public String getMessage() {
+        return message;
+    }
 }

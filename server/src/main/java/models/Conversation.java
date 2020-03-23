@@ -16,4 +16,16 @@ public class Conversation {
 
     @OneToMany
     private List<User> participants;
+
+    public int getId() {
+        return id;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public List<User> getParticipants() {
+        return participants;
+    }
 }

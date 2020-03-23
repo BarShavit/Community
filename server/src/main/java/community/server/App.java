@@ -25,6 +25,7 @@ public class App {
         var forumsManager = new ForumsManager(dal);
         var topicsManager = new TopicsManager(dal, socketIOServer, usersManager, forumsManager);
         var responsesManager = new ResponseManager(dal, socketIOServer, usersManager, topicsManager);
+        var conversationManager = new ConversationManager(dal, usersManager);
 
         var app = Javalin.create(JavalinConfig::enableCorsForAllOrigins);
 
@@ -33,6 +34,7 @@ public class App {
         var forumsController = new ForumsController(app, forumsManager);
         var topicsController = new TopicsController(app, topicsManager);
         var responseController = new ResponsesController(app, responsesManager);
+        var conversationController = new ConversationController(app, conversationManager);
 
         // SocketIO
         socketIOServer.start();
