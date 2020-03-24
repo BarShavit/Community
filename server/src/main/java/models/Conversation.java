@@ -14,7 +14,7 @@ public class Conversation {
     @Column(name = "subject")
     private String subject;
 
-    @OneToMany
+    @ManyToMany
     private List<User> participants;
 
     public int getId() {

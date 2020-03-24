@@ -17,7 +17,7 @@ public class ConversationController {
         this.manager = manager;
 
         server.routes(() -> path("conversation", () -> {
-            get(":/id", ctx -> ctx.result(gson.toJson(manager.getAllConversations(parseInt(ctx.pathParam("id"))))));
+            get("/:id", ctx -> ctx.result(gson.toJson(manager.getAllConversations(parseInt(ctx.pathParam("id"))))));
             get("messages/:id", ctx -> ctx.result(gson.toJson(manager.getConversationMessages(parseInt(ctx.pathParam("id"))))));
             post("", (ctx ->{
                 if (addConversation(gson.fromJson(ctx.body(), Conversation.class)))
