@@ -12,7 +12,7 @@ export class AllConversationsComponent implements OnInit {
 
   constructor(private conversationService: ConversationService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     let promise = this.conversationService.getAllConversation();
     // If the promise is null - we tried to get conversation without login first
     if (promise == null) {

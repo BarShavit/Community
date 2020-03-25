@@ -3,6 +3,7 @@ import { UsersService } from 'src/app/shared/services/users.service';
 import { MatDialog } from '@angular/material/dialog';
 import { RegisterComponent } from '../register/register.component';
 import { LoginComponent } from '../login/login.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-submenu',
@@ -11,7 +12,8 @@ import { LoginComponent } from '../login/login.component';
 })
 export class SubmenuComponent implements OnInit {
 
-  constructor(public usersService: UsersService, public dialog: MatDialog) { }
+  constructor(public usersService: UsersService, public dialog: MatDialog,
+    private router : Router) { }
 
   ngOnInit(): void {
   }
@@ -39,5 +41,9 @@ export class SubmenuComponent implements OnInit {
 
   disconnect() {
     this.usersService.disconnect();
+  }
+
+  conversations(){
+    this.router.navigate(['conversations']);
   }
 }

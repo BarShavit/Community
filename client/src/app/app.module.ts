@@ -12,6 +12,7 @@ import { CategoryPageModule } from './category-page/category-page.module';
 import { SubmenuModule } from './submenu/submenu.module';
 import { ForumViewModule } from './forum-view/forum-view.module';
 import { TopicViewModule } from './topic-view/topic-view.module';
+import { ConversationsModule } from './conversations/conversations.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { TopicViewModule } from './topic-view/topic-view.module';
     CategoryPageModule,
     SubmenuModule,
     ForumViewModule,
-    TopicViewModule
+    TopicViewModule,
+    ConversationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

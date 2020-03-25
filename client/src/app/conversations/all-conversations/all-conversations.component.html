@@ -1,7 +1,10 @@
-<mat-card *ngIf="conversations!=null" *ngFor="let conversation of conversations">
-    <mat-card-header>
-        <div mat-card-avatar class="header-image"></div>
-        <mat-card-title>{{conversation.subject}}</mat-card-title>
-        <mat-card-subtitle>מספר משתתפים: {{conversation.participants.length}}</mat-card-subtitle>
-    </mat-card-header>
-</mat-card>
+<div *ngIf="conversations!=null">
+    <mat-card class="main-background" *ngFor="let conversation of conversations; last as isLast">
+        <mat-card-header>
+            <div mat-card-avatar class="header-image"></div>
+            <mat-card-title>{{conversation.subject}}</mat-card-title>
+            <mat-card-subtitle>מספר משתתפים: {{conversation.participants.length}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-divider *ngIf="!isLast"></mat-divider>
+    </mat-card>
+</div>

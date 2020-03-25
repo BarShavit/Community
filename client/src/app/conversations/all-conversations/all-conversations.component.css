@@ -1,4 +1,10 @@
-header-image {
-    background-image: url('assets/conversation-image.png');
+.header-image {
+    background-image: url('../../../assets/conversation-image.png');
+    height: 45px;
+    width: 45px;
     background-size: cover;
+}
+
+.main-background {
+    background-color: #1a1b1c;
 }

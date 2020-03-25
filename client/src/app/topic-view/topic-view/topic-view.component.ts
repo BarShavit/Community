@@ -25,6 +25,6 @@ export class TopicViewComponent implements OnInit {
   }
 
   newResponse() {
-    this.router.navigate(['/newresponse/', this.topic.id], { state: { data: this.topic } });
+    this.router.navigate(['/newresponse/', this.topic.id]);
   }
 }

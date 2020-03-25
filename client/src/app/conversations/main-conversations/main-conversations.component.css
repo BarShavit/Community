@@ -1,0 +1,10 @@
+.all-conversation-box {
+    height: 48%;
+    border-left: 1px #282828 solid;
+}
+
+.all-conversation-component {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}

@@ -12,6 +12,8 @@ export class UsersService {
   storageUserName: string = "user";
   connected: boolean = false;
   loggedUser: user;
+  connectedReady = false;
+  loggedUserReady = false;
 
   constructor(private http: HttpClient, private consts: ConstantsService,
     private storage: StorageMap) {
@@ -21,6 +23,8 @@ export class UsersService {
       } else {
         this.connected = false;
       }
+
+      this.connectedReady = true;
     });
 
     this.storage.get(this.storageUserName).toPromise().then((data) => {
@@ -29,6 +33,8 @@ export class UsersService {
       } else {
         this.loggedUser = null;
       }
+
+      this.loggedUserReady = true;
     });
   }
 
