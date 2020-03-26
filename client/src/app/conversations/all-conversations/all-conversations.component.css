@@ -5,6 +5,20 @@
     background-size: cover;
 }
 
-.main-background {
+.conversation-card {
     background-color: #1a1b1c;
+    cursor: pointer;
+    border-radius: 0;
+}
+
+.seperator {
+    border-bottom: 1px #282828 solid;
+}
+
+.not-seperator {
+    border-bottom: 0;
+}
+
+.selected {
+    background-color: #084a73 !important;
 }

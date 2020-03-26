@@ -7,10 +7,11 @@ import { SharedModule } from '../shared/shared.module';
 import { MatCardModule } from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDividerModule } from '@angular/material/divider';
+import { ConversationChatComponent } from './conversation-chat/conversation-chat.component';
 
 
 @NgModule({
-  declarations: [MainConversationsComponent, AllConversationsComponent],
+  declarations: [MainConversationsComponent, AllConversationsComponent, ConversationChatComponent],
   imports: [
     CommonModule,
     BrowserAnimationsModule,

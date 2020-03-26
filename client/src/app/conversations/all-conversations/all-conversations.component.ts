@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { conversation } from 'src/app/shared/models/conversation';
 import { ConversationService } from '../services/conversation.service';
 
@@ -9,6 +9,9 @@ import { ConversationService } from '../services/conversation.service';
 })
 export class AllConversationsComponent implements OnInit {
   conversations: conversation[];
+  selectedConversation: conversation;
+
+  @Output() onSelect = new EventEmitter<conversation>()
 
   constructor(private conversationService: ConversationService) { }
 
@@ -24,4 +27,9 @@ export class AllConversationsComponent implements OnInit {
     });
   }
 
+  select(conv: conversation) {
+    this.selectedConversation = conv;
+
+    this.onSelect.emit(this.selectedConversation);
+  }
 }

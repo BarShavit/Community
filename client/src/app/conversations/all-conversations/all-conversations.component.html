@@ -1,10 +1,9 @@
 <div *ngIf="conversations!=null">
-    <mat-card class="main-background" *ngFor="let conversation of conversations; last as isLast">
+    <mat-card class="conversation-card" [class.seperator]="!isLast" [class.not-seperator]="isLast" [class.selected]="selectedConversation != null && conversation.id == selectedConversation.id" *ngFor="let conversation of conversations; last as isLast" (click)="select(conversation)">
         <mat-card-header>
             <div mat-card-avatar class="header-image"></div>
             <mat-card-title>{{conversation.subject}}</mat-card-title>
             <mat-card-subtitle>מספר משתתפים: {{conversation.participants.length}}</mat-card-subtitle>
         </mat-card-header>
-        <mat-divider *ngIf="!isLast"></mat-divider>
     </mat-card>
 </div>

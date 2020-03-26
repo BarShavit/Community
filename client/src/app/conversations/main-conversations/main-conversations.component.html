@@ -1,9 +1,9 @@
 <mat-grid-list cols="4">
     <mat-grid-tile class="all-conversation-box" [colspan]="1" [rowspan]="1">
-        <app-all-conversations class="all-conversation-component"></app-all-conversations>
+        <app-all-conversations class="all-conversation-component" (onSelect)="onSelect($event)"></app-all-conversations>
     </mat-grid-tile>
 
     <mat-grid-tile [colspan]="3" [rowspan]="1">
-
+        <app-conversation-chat [conversation]="selectedConversation"></app-conversation-chat>
     </mat-grid-tile>
 </mat-grid-list>
