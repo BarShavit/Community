@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConversationChatComponent } from './conversation-chat/conversation-chat.component';
 import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,7 +19,9 @@ import { MatInputModule } from '@angular/material/input';
     MatGridListModule,
     SharedModule,
     MatCardModule,
-    MatInputModule
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports:[
     MainConversationsComponent,

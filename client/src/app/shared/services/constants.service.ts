@@ -7,7 +7,8 @@ export class ConstantsService {
 
   serverUrl: string = "http://localhost/";
   newTopicKey = "new-topic";
-  newResponseKey = "new-response"
+  newResponseKey = "new-response";
+  newConversationMessageKey = "new-conversation-message";
 
   constructor() { }
 }

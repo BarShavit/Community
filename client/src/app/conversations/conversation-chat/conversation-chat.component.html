@@ -3,21 +3,24 @@
         {{conversation.subject}}
     </div>
 
-    <div class="messages-box">
-        <div *ngFor="let message of conversationService.conversations[conversation.id]">
-            <span [class.my-message]="isMyMessage(message)" [class.other-message]="!isMyMessage(message)">
-                {{message.message}}
-            </span>
-</div>
-</div>
+    <div class="messages-box" #messagesBox>
+        <div class="message-container" *ngFor="let message of conversationService.conversations[conversation.id]">
+            <div [class.left]="!isMyMessage(message)">
+                <div class="creator-name">{{message.creator.username}} - {{message.publishDate}}</div>
+                <div [class.my-message]="isMyMessage(message)" [class.other-message]="!isMyMessage(message)">
+                    {{message.message}}
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div class="send-box">
-    <mat-form-field class="send-input">
-        <input matInput placeholder="כתוב הודעה">
-    </mat-form-field>
-    <span class="send-button">
-            <svg class="send-svg" enable-background="new 0 0 24 24" height="30" viewBox="0 0 24 24" width="30"
-                xmlns="http://www.w3.org/2000/svg">
+    <div class="send-box">
+        <mat-form-field class="send-input">
+            <input matInput placeholder="כתוב הודעה" [(ngModel)]="message">
+        </mat-form-field>
+        <span class="send-button">
+            <svg (click)="send()" class="send-svg" enable-background="new 0 0 24 24" height="30" viewBox="0 0 24 24"
+                width="30" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="m11.937 13.674-3.285-1.374c-.201-.082-.43-.061-.612.059-.181.12-.29.324-.29.542v4.99c0 .269.165.51.416.607.076.03.156.044.235.044.18 0 .356-.075.482-.214l3.285-3.616c.142-.156.2-.372.153-.579-.046-.206-.189-.377-.384-.459z"
                     fill="#2196f3" />

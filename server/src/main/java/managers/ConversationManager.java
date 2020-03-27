@@ -1,8 +1,10 @@
 package managers;
 
+import configurations.SocketIOConstants;
 import database.DAL;
 import models.Conversation;
 import models.ConversationMessage;
+import socketIO.ISocketIOSender;
 
 import java.util.List;
 
@@ -13,10 +15,12 @@ import java.util.List;
 public class ConversationManager {
     private DAL dal;
     private UsersManager usersManager;
+    private ISocketIOSender socketIOSender;
 
-    public ConversationManager(DAL dal, UsersManager usersManager) {
+    public ConversationManager(DAL dal, UsersManager usersManager, ISocketIOSender socketIOSender) {
         this.dal = dal;
         this.usersManager = usersManager;
+        this.socketIOSender = socketIOSender;
     }
 
     public Conversation getConversation(int conversationId){
@@ -50,6 +54,8 @@ public class ConversationManager {
         dal.getManager().persist(message);
 
         dal.getManager().getTransaction().commit();
+
+        socketIOSender.emitData(SocketIOConstants.NewConversationMessage, message);
 
         return true;
     }
