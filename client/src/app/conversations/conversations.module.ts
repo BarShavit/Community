@@ -6,8 +6,8 @@ import { AllConversationsComponent } from './all-conversations/all-conversations
 import { SharedModule } from '../shared/shared.module';
 import { MatCardModule } from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDividerModule } from '@angular/material/divider';
 import { ConversationChatComponent } from './conversation-chat/conversation-chat.component';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -18,7 +18,7 @@ import { ConversationChatComponent } from './conversation-chat/conversation-chat
     MatGridListModule,
     SharedModule,
     MatCardModule,
-    MatDividerModule
+    MatInputModule
   ],
   exports:[
     MainConversationsComponent,

@@ -1,0 +1,36 @@
+.send-box {
+    position: absolute;
+    bottom: 0;
+    width: 98%;
+    margin-right: 2%;
+    height: 10%
+}
+
+.send-input {
+    width: 50%;
+}
+
+.send-button {
+    position: absolute;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+}
+
+.send-svg {
+    padding-top: 10px;
+    cursor: pointer;
+}
+
+.subject-box {
+    color: white;
+    margin-right: 2%;
+    font-size: 20px;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    height: 6%;
+}
+
+.messages-box {
+    height: 84%;
+    background-color: blue;
+}
