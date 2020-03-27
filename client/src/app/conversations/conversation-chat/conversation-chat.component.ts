@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { conversation } from 'src/app/shared/models/conversation';
 import { ConversationService } from '../services/conversation.service';
 import { conversationMessage } from 'src/app/shared/models/conversation-message';
@@ -26,6 +26,12 @@ export class ConversationChatComponent implements OnInit {
   ngAfterViewChecked() {
     this.scrollToBottom();
   }
+
+  @HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent) {
+    if (event.key === "Enter") {
+        this.send();
+    }
+}
 
   isMyMessage(conversationMessage: conversationMessage) {
     return conversationMessage.creator.id == this.userService.loggedUser.id;
