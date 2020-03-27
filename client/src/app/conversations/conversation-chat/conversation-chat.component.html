@@ -6,7 +6,7 @@
     <div class="messages-box" #messagesBox>
         <div class="message-container" *ngFor="let message of conversationService.conversations[conversation.id]">
             <div [class.left]="!isMyMessage(message)">
-                <div class="creator-name">{{message.creator.username}} - {{message.publishDate}}</div>
+                <div class="creator-name">{{message.creator.username}} - {{convertDateToString(message.publishDate)}}</div>
                 <div [class.my-message]="isMyMessage(message)" [class.other-message]="!isMyMessage(message)">
                     {{message.message}}
                 </div>

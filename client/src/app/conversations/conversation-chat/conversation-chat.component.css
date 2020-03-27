@@ -45,7 +45,7 @@
     font-family: Roboto, "Helvetica Neue", sans-serif;
     padding: 5px;
     margin-bottom: 10px;
-    float: right;
+    display: inline-block;
 }
 
 .other-message {
@@ -55,6 +55,7 @@
     font-family: Roboto, "Helvetica Neue", sans-serif;
     padding: 5px;
     margin-bottom: 10px;
+    display: inline-block;
 }
 
 .message-container {
@@ -63,6 +64,7 @@
 
 .left {
     float: left;
+    margin-left: 1%;
 }
 
 .creator-name {

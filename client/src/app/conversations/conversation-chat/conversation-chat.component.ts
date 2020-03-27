@@ -3,6 +3,7 @@ import { conversation } from 'src/app/shared/models/conversation';
 import { ConversationService } from '../services/conversation.service';
 import { conversationMessage } from 'src/app/shared/models/conversation-message';
 import { UsersService } from 'src/app/shared/services/users.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-conversation-chat',
@@ -39,5 +40,9 @@ export class ConversationChatComponent implements OnInit {
     try {
       this.messagesBox.nativeElement.scrollTop = this.messagesBox.nativeElement.scrollHeight;
     } catch (err) { }
+  }
+
+  convertDateToString(date:Date) : string{
+    return moment(date).format("D/M/YYYY H:m:ss");
   }
 }
