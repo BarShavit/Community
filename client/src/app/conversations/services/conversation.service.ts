@@ -3,11 +3,14 @@ import { UsersService } from 'src/app/shared/services/users.service';
 import { HttpClient } from '@angular/common/http';
 import { ConstantsService } from 'src/app/shared/services/constants.service';
 import { conversation } from 'src/app/shared/models/conversation';
+import { conversationMessage } from 'src/app/shared/models/conversation-message';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConversationService {
+
+  conversations = {}
 
   constructor(private userService: UsersService, private http: HttpClient,
     private consts: ConstantsService) { }
@@ -16,7 +19,7 @@ export class ConversationService {
     // We can ask for the logged user, before the service
     // loaded it from the storage - so if the user service
     // isn't ready - we check it every 200 ms.
-    while(!this.userService.loggedUserReady){
+    while (!this.userService.loggedUserReady) {
       await this.delay(200);
     }
 
@@ -30,5 +33,16 @@ export class ConversationService {
 
   async delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  async loadConversationMessages(conversationId: number) {
+    if (this.conversations[conversationId] != null) {
+      return this.conversations[conversationId];
+    }
+
+    return this.http.get<conversationMessage[]>(this.consts.serverUrl + "conversation/messages/" + conversationId)
+    .toPromise().then((data) => {
+      this.conversations[conversationId] = data;
+    });
   }
 }

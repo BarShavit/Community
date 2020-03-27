@@ -32,5 +32,28 @@
 
 .messages-box {
     height: 84%;
-    background-color: blue;
+    margin-right: 2%;
+    overflow: auto;
+}
+
+.my-message {
+    border-radius: 10px;
+    background-color: #03a9f4;
+    border: 1px rgb(71, 71, 71) solid;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    padding: 10px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.other-message {
+    border-radius: 10px;
+    background-color: #858585;
+    border: 1px rgb(71, 71, 71) solid;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    padding: 10px;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    margin-bottom: 10px;
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { conversation } from 'src/app/shared/models/conversation';
+import { ConversationService } from '../services/conversation.service';
 
 @Component({
   selector: 'app-main-conversations',
@@ -10,12 +11,13 @@ export class MainConversationsComponent implements OnInit {
 
   selectedConversation : conversation;
 
-  constructor() { }
+  constructor(private conversationService:ConversationService) { }
 
   ngOnInit(): void {
   }
 
-  onSelect(conversation:conversation){
+  async onSelect(conversation:conversation){
+    await this.conversationService.loadConversationMessages(conversation.id);
     this.selectedConversation = conversation;
   }
 }
