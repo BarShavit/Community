@@ -17,3 +17,8 @@
 .full-height {
     height: 48%;
 }
+
+.conversation-members-box {
+    height: 48%;
+    border-right: 1px #282828 solid;
+}

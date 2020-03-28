@@ -1,0 +1,9 @@
+<span *ngIf="conversation!=null">
+    <mat-list>
+        <div mat-subheader>רשימת משתתפים</div>
+        <mat-list-item *ngFor="let member of conversation.participants">
+            <mat-icon mat-list-icon>face</mat-icon>
+            <div mat-line>{{member.username}}</div>
+        </mat-list-item>
+    </mat-list>
+</span>

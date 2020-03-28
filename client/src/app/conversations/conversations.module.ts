@@ -9,10 +9,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConversationChatComponent } from './conversation-chat/conversation-chat.component';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { ConversationMembersComponent } from './conversation-members/conversation-members.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
-  declarations: [MainConversationsComponent, AllConversationsComponent, ConversationChatComponent],
+  declarations: [MainConversationsComponent, AllConversationsComponent, ConversationChatComponent, ConversationMembersComponent],
   imports: [
     CommonModule,
     BrowserAnimationsModule,
@@ -21,9 +23,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatCardModule,
     MatInputModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatIconModule,
+    MatListModule
   ],
-  exports:[
+  exports: [
     MainConversationsComponent,
     AllConversationsComponent
   ]

@@ -4,10 +4,12 @@
     </mat-grid-tile>
 
     <mat-grid-tile class="full-height" [colspan]="2" [rowspan]="1">
-        <app-conversation-chat class="conversation-component" [conversation]="selectedConversation"></app-conversation-chat>
+        <app-conversation-chat class="conversation-component" [conversation]="selectedConversation">
+        </app-conversation-chat>
     </mat-grid-tile>
 
-    <mat-grid-tile class="full-height" [colspan]="1" [rowspan]="1">
-
+    <mat-grid-tile class="full-height conversation-members-box" [colspan]="1" [rowspan]="1">
+        <app-conversation-members class="conversation-component" [conversation]="selectedConversation">
+        </app-conversation-members>
     </mat-grid-tile>
 </mat-grid-list>
