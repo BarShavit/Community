@@ -1,4 +1,8 @@
-.warning{
-    font-family:Roboto, "Helvetica Neue", sans-serif;
-    color:red;
+.warning {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    color: red;
+}
+
+::ng-deep .mat-dialog-container {
+    background-color: rgb(26, 27, 28);
 }
