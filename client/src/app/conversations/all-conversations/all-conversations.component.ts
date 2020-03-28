@@ -1,6 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { conversation } from 'src/app/shared/models/conversation';
 import { ConversationService } from '../services/conversation.service';
+import { NewConversationComponent } from '../new-conversation/new-conversation.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-all-conversations',
@@ -13,7 +15,8 @@ export class AllConversationsComponent implements OnInit {
 
   @Output() onSelect = new EventEmitter<conversation>()
 
-  constructor(private conversationService: ConversationService) { }
+  constructor(private conversationService: ConversationService,
+    private dialog: MatDialog) { }
 
   ngOnInit() {
     let promise = this.conversationService.getAllConversation();
@@ -31,5 +34,15 @@ export class AllConversationsComponent implements OnInit {
     this.selectedConversation = conv;
 
     this.onSelect.emit(this.selectedConversation);
+  }
+
+  create() {
+    const dialogRef = this.dialog.open(NewConversationComponent, {
+      width: '250px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 }

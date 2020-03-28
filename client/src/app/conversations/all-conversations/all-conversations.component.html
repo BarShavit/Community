@@ -1,4 +1,9 @@
 <div *ngIf="conversations!=null">
+
+    <div class="create-wrapper">
+        <button mat-raised-button color="primary" (click)="create()">צור שיחה חדשה</button>
+    </div>
+
     <mat-card class="conversation-card" [class.seperator]="!isLast" [class.not-seperator]="isLast" [class.selected]="selectedConversation != null && conversation.id == selectedConversation.id" *ngFor="let conversation of conversations; last as isLast" (click)="select(conversation)">
         <mat-card-header>
             <div mat-card-avatar class="header-image"></div>

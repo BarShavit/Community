@@ -12,9 +12,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConversationMembersComponent } from './conversation-members/conversation-members.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
+import { NewConversationComponent } from './new-conversation/new-conversation.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [MainConversationsComponent, AllConversationsComponent, ConversationChatComponent, ConversationMembersComponent],
+  declarations: [MainConversationsComponent, AllConversationsComponent, ConversationChatComponent, ConversationMembersComponent, NewConversationComponent],
   imports: [
     CommonModule,
     BrowserAnimationsModule,
@@ -25,7 +28,9 @@ import { MatListModule } from '@angular/material/list';
     FormsModule,
     ReactiveFormsModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatButtonModule,
+    MatDialogModule
   ],
   exports: [
     MainConversationsComponent,
