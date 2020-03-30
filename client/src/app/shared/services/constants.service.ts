@@ -9,6 +9,7 @@ export class ConstantsService {
   newTopicKey = "new-topic";
   newResponseKey = "new-response";
   newConversationMessageKey = "new-conversation-message";
+  newConversationKey = "new-conversation";
 
   constructor() { }
 }

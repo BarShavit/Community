@@ -20,6 +20,7 @@ public class UsersController {
         gson = gsonBuilder.create();
 
         server.routes(() -> path("users", () -> {
+            get("", (ctx) -> ctx.result(gson.toJson(manager.getAll())));
             get("/:name", (ctx) -> {
                 var user = getUser(ctx.pathParam("name"));
                 if (user == null) {

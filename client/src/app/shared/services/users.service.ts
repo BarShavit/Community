@@ -14,6 +14,7 @@ export class UsersService {
   loggedUser: user;
   connectedReady = false;
   loggedUserReady = false;
+  allUsers: user[] = [];
 
   constructor(private http: HttpClient, private consts: ConstantsService,
     private storage: StorageMap) {
@@ -35,6 +36,10 @@ export class UsersService {
       }
 
       this.loggedUserReady = true;
+    });
+
+    this.http.get<user[]>(this.consts.serverUrl + "users").toPromise().then(data =>{
+      this.allUsers = data;
     });
   }
 

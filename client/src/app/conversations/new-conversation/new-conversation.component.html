@@ -1,1 +1,26 @@
-<p>new-conversation works!</p>
+<div class="subject-box">
+    שיחה חדשה
+</div>
+
+<form>
+    <mat-form-field appearance="fill" [formGroup]="form">
+        <mat-label>נושא השיחה</mat-label>
+        <input matInput [errorStateMatcher]="matcher" formControlName="subject">
+        <mat-error *ngIf="form.controls['subject'].invalid">
+            נא לציין את שם השיחה.
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field [formGroup]="form">
+        <mat-label>משתתפי השיחה</mat-label>
+        <mat-select formControlName="members" [errorStateMatcher]="matcher" multiple>
+            <mat-option *ngFor="let user of getUsersWithoutMyself()" [value]="user">{{user.username}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls['members'].invalid">
+            נא לבחור לפחות משתמש אחד.
+        </mat-error>
+    </mat-form-field>
+    <button mat-button cdkFocusInitial (click)="create()" [disabled]="!form.valid">יצירה</button>
+    <div *ngIf="!failedRegistered" class="warning">
+        כשל ביצירת השיחה.
+    </div>
+</form>

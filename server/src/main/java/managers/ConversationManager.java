@@ -75,6 +75,8 @@ public class ConversationManager {
 
         dal.getManager().getTransaction().commit();
 
+        socketIOSender.emitData(SocketIOConstants.NewConversation, conversation);
+
         return true;
     }
 }

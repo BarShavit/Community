@@ -6,6 +6,7 @@ import models.User;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 /**
 Manage the users. Including register, login, user data and etc
@@ -68,5 +69,10 @@ public class UsersManager {
         } catch (Exception e){
             return false;
         }
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<User> getAll(){
+        return (List<User>)dal.getManager().createQuery("SELECT user FROM User user").getResultList();
     }
 }

@@ -60,13 +60,17 @@ export class ConversationService {
     this.conversations[message.conversation.id].push(message);
   }
 
-  sendConversationMessage(conversation:conversation, message:string){
+  sendConversationMessage(conversation: conversation, message: string) {
     let newMessage = new conversationMessage();
     newMessage.message = message;
     newMessage.conversation = conversation;
     newMessage.publishDate = new Date();
     newMessage.creator = this.userService.loggedUser;
 
-    this.http.post(this.consts.serverUrl + "conversation/messages", newMessage).toPromise().then(() => {});
+    this.http.post(this.consts.serverUrl + "conversation/messages", newMessage).toPromise().then(() => { });
+  }
+
+  newConversation(conversation: conversation) {
+    this.http.post(this.consts.serverUrl + "conversation", conversation).toPromise().then(() => {});
   }
 }

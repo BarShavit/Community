@@ -15,9 +15,13 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { NewConversationComponent } from './new-conversation/new-conversation.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+import { NgpSortModule, SortByPipe } from "ngp-sort-pipe";
 
 @NgModule({
-  declarations: [MainConversationsComponent, AllConversationsComponent, ConversationChatComponent, ConversationMembersComponent, NewConversationComponent],
+  declarations: [MainConversationsComponent,
+    AllConversationsComponent, ConversationChatComponent,
+    ConversationMembersComponent, NewConversationComponent],
   imports: [
     CommonModule,
     BrowserAnimationsModule,
@@ -30,7 +34,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatIconModule,
     MatListModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSelectModule,
+    NgpSortModule
   ],
   exports: [
     MainConversationsComponent,
