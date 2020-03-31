@@ -3,7 +3,7 @@
 </div>
 
 <form>
-    <mat-form-field appearance="fill" [formGroup]="form">
+    <mat-form-field [formGroup]="form">
         <mat-label>נושא השיחה</mat-label>
         <input matInput [errorStateMatcher]="matcher" formControlName="subject">
         <mat-error *ngIf="form.controls['subject'].invalid">
