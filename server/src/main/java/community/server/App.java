@@ -21,8 +21,8 @@ public class App {
         var socketIOServer = new SocketIOServer(socketIOConf);
 
         var usersManager = new UsersManager(dal);
-        var categoriesManager = new CategoriesManager(dal);
-        var forumsManager = new ForumsManager(dal);
+        var categoriesManager = new CategoriesManager(dal, socketIOServer);
+        var forumsManager = new ForumsManager(dal, categoriesManager);
         var topicsManager = new TopicsManager(dal, socketIOServer, usersManager, forumsManager);
         var responsesManager = new ResponseManager(dal, socketIOServer, usersManager, topicsManager);
         var conversationManager = new ConversationManager(dal, usersManager, socketIOServer);

@@ -13,10 +13,23 @@ public class Category {
     private int id;
     @Column(name = "name")
     private String name;
+
     @OneToMany
     private List<Forum> forums = new ArrayList<>();
 
     public int getId() {
         return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<Forum> getForums() {
+        return forums;
+    }
+
+    public void setForums(List<Forum> forums) {
+        this.forums = forums;
     }
 }
