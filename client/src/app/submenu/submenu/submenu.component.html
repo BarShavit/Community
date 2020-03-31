@@ -5,6 +5,7 @@
         <button mat-button (click)="login()">התחבר</button>
       </span>
         <span *ngIf="usersService.connected">
+        <button mat-button (click)="management()" *ngIf="shouldShowAdmin()">ניהול</button>
         <button mat-button (click)="conversations()">שיחות אישיות</button>
         <button mat-button (click)="disconnect()">התנתק</button>
       </span>

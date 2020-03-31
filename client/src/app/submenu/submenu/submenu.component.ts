@@ -13,11 +13,16 @@ import { Router } from '@angular/router';
 export class SubmenuComponent implements OnInit {
 
   constructor(public usersService: UsersService, public dialog: MatDialog,
-    private router : Router) { }
+    private router: Router) { }
 
   ngOnInit(): void {
   }
 
+
+  shouldShowAdmin() {
+    return this.usersService.loggedUser != null &&
+      this.usersService.loggedUser.isAdmin;
+  }
 
   register(): void {
     const dialogRef = this.dialog.open(RegisterComponent, {
@@ -29,7 +34,7 @@ export class SubmenuComponent implements OnInit {
     });
   }
 
-    login(): void {
+  login(): void {
     const dialogRef = this.dialog.open(LoginComponent, {
       width: '250px',
     });
@@ -43,7 +48,11 @@ export class SubmenuComponent implements OnInit {
     this.usersService.disconnect();
   }
 
-  conversations(){
+  conversations() {
     this.router.navigate(['conversations']);
+  }
+
+  management() {
+    this.router.navigate(['management']);
   }
 }

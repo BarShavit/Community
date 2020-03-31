@@ -1,0 +1,39 @@
+.category-card {
+    width: 30%;
+    display: inline-block;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    background-color: rgb(49, 49, 49);
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.category-title {
+    justify-content: center;
+}
+
+.forum-logo {
+    height: 15px;
+    width: 15px;
+    vertical-align: bottom;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.add-content {
+    text-align: center;
+    height: 120px;
+    vertical-align: middle;
+}
+
+.add-category-icon {
+    font-size: 80px;
+    height: 80px;
+    width: 80px;
+    margin-top: 19px !important;
+    cursor: pointer;
+}

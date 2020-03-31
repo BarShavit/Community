@@ -6,6 +6,7 @@ import { TopicViewComponent } from './topic-view/topic-view/topic-view.component
 import { NewTopicComponent } from './forum-view/new-topic/new-topic.component';
 import { NewResponseComponent } from './topic-view/new-response/new-response.component';
 import { MainConversationsComponent } from './conversations/main-conversations/main-conversations.component';
+import { ManageComponent } from './management/manage/manage.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'topic/:id', component: TopicViewComponent },
   { path: 'newresponse/:id', component: NewResponseComponent },
   { path: 'conversations', component: MainConversationsComponent },
+  { path: 'management', component: ManageComponent },
   { path: '', redirectTo: '/categories_view', pathMatch: 'full' },
   { path: '**', redirectTo: '/categories_view', pathMatch: 'full' },
 ];

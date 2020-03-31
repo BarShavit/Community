@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoriesService } from '../services/categories.service';
 import { Router } from '@angular/router';
 import { forum } from 'src/app/shared/models/forum';
+import { CategoriesService } from 'src/app/shared/services/categories.service';
 
 @Component({
   selector: 'app-categories-view',

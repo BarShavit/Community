@@ -13,6 +13,7 @@ import { SubmenuModule } from './submenu/submenu.module';
 import { ForumViewModule } from './forum-view/forum-view.module';
 import { TopicViewModule } from './topic-view/topic-view.module';
 import { ConversationsModule } from './conversations/conversations.module';
+import { ManagementModule } from './management/management.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ConversationsModule } from './conversations/conversations.module';
     SubmenuModule,
     ForumViewModule,
     TopicViewModule,
-    ConversationsModule
+    ConversationsModule,
+    ManagementModule
   ],
   providers: [],
   bootstrap: [AppComponent]

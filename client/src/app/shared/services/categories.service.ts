@@ -10,10 +10,18 @@ export class CategoriesService {
 
   categories: category[];
 
-  constructor(http: HttpClient, constants: ConstantsService) {
+  constructor(private http: HttpClient, private constants: ConstantsService) {
     http.get(constants.serverUrl + "category").toPromise().then(
       data => {
         this.categories = data as category[];
       });
+  }
+
+  async add(category: category): Promise<boolean> {
+    return this.http.post(this.constants.serverUrl + "category", category).toPromise().then(() => {
+      return true;
+    }).catch(() => {
+      return false;
+    });
   }
 }

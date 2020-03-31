@@ -19,6 +19,12 @@ public class ForumsManager {
     }
 
     public boolean addForum(int categoryId, Forum forum){
+        dal.getManager().getTransaction().begin();
+
+        dal.getManager().persist(forum);
+
+        dal.getManager().getTransaction().commit();
+
         return categoriesManager.addForumToCategory(categoryId, forum);
     }
 }

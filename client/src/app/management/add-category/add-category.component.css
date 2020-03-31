@@ -1,0 +1,16 @@
+::ng-deep .mat-dialog-container {
+    background-color: rgb(26, 27, 28);
+}
+
+.subject-box {
+    color: white;
+    margin-right: 2%;
+    font-size: 20px;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    height: 6%;
+}
+
+.warning {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    color: red;
+}
