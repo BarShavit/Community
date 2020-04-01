@@ -11,6 +11,7 @@ export class ConstantsService {
   newConversationMessageKey = "new-conversation-message";
   newConversationKey = "new-conversation";
   newCategoryKey = "new-category";
+  newForumKey = "new-forum";
 
   constructor() { }
 }

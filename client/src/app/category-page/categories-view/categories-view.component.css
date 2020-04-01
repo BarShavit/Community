@@ -1,25 +1,26 @@
-.category-card{
+.category-card {
     width: 30%;
     display: inline-block;
     margin-left: 10px;
     margin-bottom: 10px;
     background-color: rgb(49, 49, 49);
+    vertical-align: top;
 }
 
-.nowrap{
-    white-space: nowrap ;
+.nowrap {
+    white-space: nowrap;
 }
 
-.category-title{
+.category-title {
     justify-content: center;
 }
 
-.forum-logo{
+.forum-logo {
     height: 15px;
     width: 15px;
     vertical-align: bottom;
 }
 
-.clickable{
+.clickable {
     cursor: pointer;
 }

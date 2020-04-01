@@ -18,11 +18,25 @@ export class CategoriesService {
         this.categories = data as category[];
       });
 
-      socketIO.consume(constants.newCategoryKey).subscribe(this.newCategoryUpdate.bind(this));
+    socketIO.consume(constants.newCategoryKey).subscribe(this.newCategoryUpdate.bind(this));
+    socketIO.consume(constants.newForumKey).subscribe(this.newForumUpdate.bind(this));
   }
 
   private newCategoryUpdate(categoryString: string) {
     let category = JSON.parse(categoryString);
+    this.categories.push(category);
+  }
+
+  private newForumUpdate(categoryString: string) {
+    let category = JSON.parse(categoryString);
+
+    for (let i = 0; i < this.categories.length; i++) {
+      if (this.categories[i].id == category.id) {
+        this.categories[i] = category;
+        return;
+      }
+    }
+
     this.categories.push(category);
   }
 
