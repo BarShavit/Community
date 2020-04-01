@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { topic } from 'src/app/shared/models/topic';
+import { Topic } from 'src/app/shared/models/topic';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ResponseService } from '../services/response.service';
 import { TopicsService } from '../services/topics.service';
@@ -12,7 +12,7 @@ import { UsersService } from 'src/app/shared/services/users.service';
 })
 export class TopicViewComponent implements OnInit {
 
-  topic: topic;
+  topic: Topic;
 
   constructor(private route: ActivatedRoute, private router: Router,
     public responseService: ResponseService, private topicService: TopicsService,

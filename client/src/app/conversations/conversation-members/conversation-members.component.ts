@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { conversation } from 'src/app/shared/models/conversation';
+import { Conversation } from 'src/app/shared/models/conversation';
 
 @Component({
   selector: 'app-conversation-members',
@@ -8,7 +8,7 @@ import { conversation } from 'src/app/shared/models/conversation';
 })
 export class ConversationMembersComponent implements OnInit {
 
-  @Input() conversation: conversation;
+  @Input() conversation: Conversation;
 
   constructor() { }
 

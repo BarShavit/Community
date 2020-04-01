@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MyErrorStateMatcher } from 'src/app/submenu/register/register.component';
 import { MatDialogRef } from '@angular/material/dialog';
 import { CategoriesService } from 'src/app/shared/services/categories.service';
-import { category } from 'src/app/shared/models/category';
+import { Category } from 'src/app/shared/models/category';
 
 @Component({
   selector: 'app-add-category',
@@ -28,7 +28,7 @@ export class AddCategoryComponent implements OnInit {
   }
 
   async create() {
-    let newCategory = new category();
+    let newCategory = new Category();
     newCategory.forums = [];
     newCategory.name = this.form.controls['name'].value;
 

@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MyErrorStateMatcher, RegisterComponent } from '../register/register.component';
 import { UsersService } from 'src/app/shared/services/users.service';
 import { MatDialogRef } from '@angular/material/dialog';
-import { user } from 'src/app/shared/models/user';
+import { User } from 'src/app/shared/models/user';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
   async login() {
-    let newUser = new user();
+    let newUser = new User();
     newUser.username = this.form.controls['username'].value;
     newUser.password = this.form.controls['username'].value;
     newUser.email = this.form.controls['username'].value;

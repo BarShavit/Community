@@ -1,9 +1,9 @@
-import { topic } from './topic';
-import { user } from './user';
+import { Topic } from './topic';
+import { User } from './user';
 
-export class response{
-    topic:topic;
-    creator:user;
+export class Response{
+    topic:Topic;
+    creator:User;
     publishDate:Date;
     body:string;
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { forum } from '../models/forum';
-import { topic } from '../models/topic';
+import { Forum } from '../models/forum';
+import { Topic } from '../models/topic';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MyErrorStateMatcher } from 'src/app/submenu/register/register.component';
 
@@ -21,8 +21,8 @@ export class createResult {
 })
 export class NewMessageComponent implements OnInit {
 
-  @Input() forum: forum;
-  @Input() topic: topic;
+  @Input() forum: Forum;
+  @Input() topic: Topic;
   @Input() forumMode: boolean;
   @Output() create = new EventEmitter<createResult>();
 

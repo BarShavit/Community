@@ -1,10 +1,10 @@
-import { user } from './user';
-import { conversation } from './conversation';
+import { User } from './user';
+import { Conversation } from './conversation';
 
-export class conversationMessage{
+export class ConversationMessage{
     id:number;
-    creator:user;
+    creator:User;
     message:string;
     publishDate:Date;
-    conversation:conversation;
+    conversation:Conversation;
 }

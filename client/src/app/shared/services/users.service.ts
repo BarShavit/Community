@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ConstantsService } from './constants.service';
-import { user } from '../models/user';
+import { User } from '../models/user';
 import { StorageMap } from '@ngx-pwa/local-storage';
 
 @Injectable({
@@ -11,10 +11,10 @@ export class UsersService {
   storageConnectionStatusName: string = "connected";
   storageUserName: string = "user";
   connected: boolean = false;
-  loggedUser: user;
+  loggedUser: User;
   connectedReady = false;
   loggedUserReady = false;
-  allUsers: user[] = [];
+  allUsers: User[] = [];
 
   constructor(private http: HttpClient, private consts: ConstantsService,
     private storage: StorageMap) {
@@ -38,7 +38,7 @@ export class UsersService {
       this.loggedUserReady = true;
     });
 
-    this.http.get<user[]>(this.consts.serverUrl + "users").toPromise().then(data =>{
+    this.http.get<User[]>(this.consts.serverUrl + "users").toPromise().then(data =>{
       this.allUsers = data;
     });
   }
@@ -62,7 +62,7 @@ export class UsersService {
         });
   }
 
-  async register(user: user): Promise<boolean> {
+  async register(user: User): Promise<boolean> {
     return this.http.post(this.consts.serverUrl + "users", user).toPromise().then(async () => {
       this.connected = true;
       this.storage.set(this.storageConnectionStatusName,
@@ -78,8 +78,8 @@ export class UsersService {
     });
   }
 
-  private async getCurrentUser(username: string): Promise<user> {
-    return this.http.get<user>(this.consts.serverUrl + "users/" + username).toPromise().then(
+  private async getCurrentUser(username: string): Promise<User> {
+    return this.http.get<User>(this.consts.serverUrl + "users/" + username).toPromise().then(
       (data) => {
         return data;
       }

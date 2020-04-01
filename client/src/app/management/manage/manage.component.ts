@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CategoriesService } from 'src/app/shared/services/categories.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddCategoryComponent } from '../add-category/add-category.component';
-import { category } from 'src/app/shared/models/category';
+import { Category } from 'src/app/shared/models/category';
 import { NewForumComponent } from '../new-forum/new-forum.component';
 
 @Component({
@@ -18,7 +18,7 @@ export class ManageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  createForum(cat: category) {
+  createForum(cat: Category) {
     let config = new MatDialogConfig();
     config.data = cat;
     config.width = "300px";

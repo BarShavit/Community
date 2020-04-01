@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { UsersService } from 'src/app/shared/services/users.service';
 import { HttpClient } from '@angular/common/http';
 import { ConstantsService } from 'src/app/shared/services/constants.service';
-import { conversation } from 'src/app/shared/models/conversation';
-import { conversationMessage } from 'src/app/shared/models/conversation-message';
+import { Conversation } from 'src/app/shared/models/conversation';
+import { ConversationMessage } from 'src/app/shared/models/conversation-message';
 import { SocketioService } from 'src/app/shared/services/socketio.service';
 
 @Injectable({
@@ -19,7 +19,7 @@ export class ConversationService {
       this.newConversationMessage.bind(this));
   }
 
-  async getAllConversation(): Promise<conversation[]> {
+  async getAllConversation(): Promise<Conversation[]> {
     // We can ask for the logged user, before the service
     // loaded it from the storage - so if the user service
     // isn't ready - we check it every 200 ms.
@@ -31,7 +31,7 @@ export class ConversationService {
       return null;
     }
 
-    return this.http.get<conversation[]>(
+    return this.http.get<Conversation[]>(
       this.consts.serverUrl + "conversation/" + this.userService.loggedUser.id).toPromise();
   }
 
@@ -44,14 +44,14 @@ export class ConversationService {
       return this.conversations[conversationId];
     }
 
-    return this.http.get<conversationMessage[]>(this.consts.serverUrl + "conversation/messages/" + conversationId)
+    return this.http.get<ConversationMessage[]>(this.consts.serverUrl + "conversation/messages/" + conversationId)
       .toPromise().then((data) => {
         this.conversations[conversationId] = data;
       });
   }
 
   newConversationMessage(messageJson: string) {
-    let message = <conversationMessage>JSON.parse(messageJson);
+    let message = <ConversationMessage>JSON.parse(messageJson);
 
     if (this.conversations[message.conversation.id] == null) {
       return;
@@ -60,8 +60,8 @@ export class ConversationService {
     this.conversations[message.conversation.id].push(message);
   }
 
-  sendConversationMessage(conversation: conversation, message: string) {
-    let newMessage = new conversationMessage();
+  sendConversationMessage(conversation: Conversation, message: string) {
+    let newMessage = new ConversationMessage();
     newMessage.message = message;
     newMessage.conversation = conversation;
     newMessage.publishDate = new Date();
@@ -70,7 +70,7 @@ export class ConversationService {
     this.http.post(this.consts.serverUrl + "conversation/messages", newMessage).toPromise().then(() => { });
   }
 
-  newConversation(conversation: conversation) {
+  newConversation(conversation: Conversation) {
     this.http.post(this.consts.serverUrl + "conversation", conversation).toPromise().then(() => {});
   }
 }

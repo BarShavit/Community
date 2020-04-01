@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UsersService } from 'src/app/shared/services/users.service';
-import { topic } from 'src/app/shared/models/topic';
+import { Topic } from 'src/app/shared/models/topic';
 import { createResult } from 'src/app/shared/new-message/new-message.component';
-import { response } from 'src/app/shared/models/response';
+import { Response } from 'src/app/shared/models/response';
 import { ResponseService } from '../services/response.service';
 import { TopicsService } from '../services/topics.service';
 
@@ -14,7 +14,7 @@ import { TopicsService } from '../services/topics.service';
 })
 export class NewResponseComponent implements OnInit {
 
-  topic: topic;
+  topic: Topic;
 
   constructor(private router: Router, private userService: UsersService,
     private responseService: ResponseService, private topicService: TopicsService,
@@ -26,7 +26,7 @@ export class NewResponseComponent implements OnInit {
   }
 
   create(result: createResult) {
-    let res = new response();
+    let res = new Response();
     res.body = result.body;
     res.publishDate = new Date();
     res.topic = this.topic;

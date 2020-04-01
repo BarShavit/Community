@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ConstantsService } from 'src/app/shared/services/constants.service';
-import { response } from 'src/app/shared/models/response';
+import { Response } from 'src/app/shared/models/response';
 import { SocketioService } from 'src/app/shared/services/socketio.service';
 
 @Injectable({
@@ -35,7 +35,7 @@ export class ResponseService {
     }
   }
 
-  add(res: response) {
+  add(res: Response) {
     this.http.post(this.consts.serverUrl + "response/", res).toPromise().then(() => { });
   }
 }

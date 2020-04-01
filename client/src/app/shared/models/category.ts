@@ -1,7 +1,7 @@
-import { forum } from './forum';
+import { Forum } from './forum';
 
-export class category {
+export class Category {
     id: number;
     name: string;
-    forums: forum[];
+    forums: Forum[];
 }

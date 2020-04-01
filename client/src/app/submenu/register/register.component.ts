@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { FormControl, FormGroupDirective, NgForm, Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { user } from 'src/app/shared/models/user';
+import { User } from 'src/app/shared/models/user';
 import { UsersService } from 'src/app/shared/services/users.service';
 import { MatDialogRef } from '@angular/material/dialog';
 
@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
   }
 
   async register() {
-    let newUser = new user();
+    let newUser = new User();
     newUser.username = this.form.controls['username'].value;
     newUser.password = this.form.controls['password'].value;
     newUser.email = this.form.controls['email'].value;

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { forum } from 'src/app/shared/models/forum';
+import { Forum } from 'src/app/shared/models/forum';
 import { CategoriesService } from 'src/app/shared/services/categories.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class CategoriesViewComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  chooseForum(forum:forum){
+  chooseForum(forum:Forum){
     this.router.navigate(['/forum/', forum.id]);
   }
 }

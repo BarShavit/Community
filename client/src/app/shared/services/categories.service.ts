@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { category } from 'src/app/shared/models/category';
+import { Category } from 'src/app/shared/models/category';
 import { HttpClient } from '@angular/common/http';
 import { ConstantsService } from 'src/app/shared/services/constants.service';
 import { SocketioService } from './socketio.service';
@@ -9,13 +9,13 @@ import { SocketioService } from './socketio.service';
 })
 export class CategoriesService {
 
-  categories: category[];
+  categories: Category[];
 
   constructor(private http: HttpClient, private constants: ConstantsService,
     socketIO: SocketioService) {
     http.get(constants.serverUrl + "category").toPromise().then(
       data => {
-        this.categories = data as category[];
+        this.categories = data as Category[];
       });
 
     socketIO.consume(constants.newCategoryKey).subscribe(this.newCategoryUpdate.bind(this));
@@ -40,7 +40,7 @@ export class CategoriesService {
     this.categories.push(category);
   }
 
-  async add(category: category): Promise<boolean> {
+  async add(category: Category): Promise<boolean> {
     return this.http.post(this.constants.serverUrl + "category", category).toPromise().then(() => {
       return true;
     }).catch(() => {

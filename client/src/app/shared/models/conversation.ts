@@ -1,7 +1,7 @@
-import { user } from './user';
+import { User } from './user';
 
-export class conversation{
+export class Conversation{
     id:number;
     subject:string;
-    participants:user[];
+    participants:User[];
 }

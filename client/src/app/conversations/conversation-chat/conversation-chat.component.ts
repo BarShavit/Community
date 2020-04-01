@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, HostListener } from '@angular/core';
-import { conversation } from 'src/app/shared/models/conversation';
+import { Conversation } from 'src/app/shared/models/conversation';
 import { ConversationService } from '../services/conversation.service';
-import { conversationMessage } from 'src/app/shared/models/conversation-message';
+import { ConversationMessage } from 'src/app/shared/models/conversation-message';
 import { UsersService } from 'src/app/shared/services/users.service';
 import * as moment from 'moment';
 
@@ -12,7 +12,7 @@ import * as moment from 'moment';
 })
 export class ConversationChatComponent implements OnInit {
 
-  @Input() conversation: conversation;
+  @Input() conversation: Conversation;
   message: string = "";
   @ViewChild('messagesBox') private messagesBox: ElementRef;
 
@@ -33,7 +33,7 @@ export class ConversationChatComponent implements OnInit {
     }
 }
 
-  isMyMessage(conversationMessage: conversationMessage) {
+  isMyMessage(conversationMessage: ConversationMessage) {
     return conversationMessage.creator.id == this.userService.loggedUser.id;
   }
 

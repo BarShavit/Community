@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MyErrorStateMatcher } from 'src/app/submenu/register/register.component';
 import { UsersService } from 'src/app/shared/services/users.service';
-import { conversation } from 'src/app/shared/models/conversation';
+import { Conversation } from 'src/app/shared/models/conversation';
 import { ConversationService } from '../services/conversation.service';
 import { MatDialogRef } from '@angular/material/dialog';
 
@@ -30,7 +30,7 @@ export class NewConversationComponent implements OnInit {
   }
 
   create(){
-    let newConversation = new conversation();
+    let newConversation = new Conversation();
     newConversation.subject = this.form.controls['subject'].value;
     newConversation.participants = this.form.controls['members'].value;
 

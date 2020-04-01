@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { forum } from 'src/app/shared/models/forum';
+import { Forum } from 'src/app/shared/models/forum';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TopicsService } from '../services/topics.service';
-import { topic } from 'src/app/shared/models/topic';
+import { Topic } from 'src/app/shared/models/topic';
 import { ForumsService } from '../../shared/services/forums.service';
 import { UsersService } from 'src/app/shared/services/users.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -15,10 +15,10 @@ import { Subscription } from 'rxjs';
 })
 export class ForumViewComponent implements OnInit, OnDestroy {
 
-  forum: forum;
+  forum: Forum;
   displayedColumns: string[] = ['creator', 'subject', 'publishdate'];
   private updateSubscription: Subscription;
-  dataSource = new MatTableDataSource<topic>();
+  dataSource = new MatTableDataSource<Topic>();
 
   public pageSize = 5;
   public currentPage = 0;
@@ -52,7 +52,7 @@ export class ForumViewComponent implements OnInit, OnDestroy {
     this.updateSubscription.unsubscribe();
   }
 
-  chooseTopic(topic: topic) {
+  chooseTopic(topic: Topic) {
     this.router.navigate(['/topic/', topic.id], { state: { data: topic } });
   }
 
@@ -60,7 +60,7 @@ export class ForumViewComponent implements OnInit, OnDestroy {
     this.router.navigate(['/newtopic/', this.forum.id], { state: { data: this.forum } });
   }
 
-  trackById(index: number, item: topic) {
+  trackById(index: number, item: Topic) {
     return item.id;
   }
 

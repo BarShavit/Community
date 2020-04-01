@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { conversation } from 'src/app/shared/models/conversation';
+import { Conversation } from 'src/app/shared/models/conversation';
 import { ConversationService } from '../services/conversation.service';
 
 @Component({
@@ -9,14 +9,14 @@ import { ConversationService } from '../services/conversation.service';
 })
 export class MainConversationsComponent implements OnInit {
 
-  selectedConversation : conversation;
+  selectedConversation : Conversation;
 
   constructor(private conversationService:ConversationService) { }
 
   ngOnInit(): void {
   }
 
-  async onSelect(conversation:conversation){
+  async onSelect(conversation:Conversation){
     await this.conversationService.loadConversationMessages(conversation.id);
     this.selectedConversation = conversation;
   }

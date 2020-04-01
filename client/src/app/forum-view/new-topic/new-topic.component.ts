@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { forum } from 'src/app/shared/models/forum';
-import { topic } from 'src/app/shared/models/topic';
+import { Forum } from 'src/app/shared/models/forum';
+import { Topic } from 'src/app/shared/models/topic';
 import { UsersService } from 'src/app/shared/services/users.service';
 import { TopicsService } from '../services/topics.service';
 import { createResult } from 'src/app/shared/new-message/new-message.component';
@@ -14,7 +14,7 @@ import { ForumsService } from '../../shared/services/forums.service';
 })
 export class NewTopicComponent implements OnInit {
 
-  forum: forum;
+  forum: Forum;
 
   constructor(private router: Router, private userService: UsersService,
     private topicService: TopicsService, private forumService: ForumsService,
@@ -26,7 +26,7 @@ export class NewTopicComponent implements OnInit {
   }
 
   create(result: createResult) {
-    let newTopic = new topic();
+    let newTopic = new Topic();
     newTopic.subject = result.subject;
     newTopic.body = result.body;
     newTopic.creator = this.userService.loggedUser;

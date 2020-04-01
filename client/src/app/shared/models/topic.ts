@@ -1,10 +1,10 @@
-import { forum } from './forum';
-import { user } from './user';
+import { Forum } from './forum';
+import { User } from './user';
 
-export class topic {
+export class Topic {
     id:number;
-    creator: user;
-    forum: forum;
+    creator: User;
+    forum: Forum;
     publishDate: Date;
     subject: string;
     body: string;

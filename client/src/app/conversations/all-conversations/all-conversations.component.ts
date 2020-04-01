@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
-import { conversation } from 'src/app/shared/models/conversation';
+import { Conversation } from 'src/app/shared/models/conversation';
 import { ConversationService } from '../services/conversation.service';
 import { NewConversationComponent } from '../new-conversation/new-conversation.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -15,9 +15,9 @@ import { SortByPipe } from 'ngp-sort-pipe';
   styleUrls: ['./all-conversations.component.css']
 })
 export class AllConversationsComponent implements OnInit, OnDestroy {
-  conversations: conversation[];
-  selectedConversation: conversation;
-  @Output() onSelect = new EventEmitter<conversation>();
+  conversations: Conversation[];
+  selectedConversation: Conversation;
+  @Output() onSelect = new EventEmitter<Conversation>();
 
   private newConversationSubscription: Subscription;
 
@@ -46,7 +46,7 @@ export class AllConversationsComponent implements OnInit, OnDestroy {
     this.newConversationSubscription.unsubscribe();
   }
 
-  select(conv: conversation) {
+  select(conv: Conversation) {
     this.selectedConversation = conv;
 
     this.onSelect.emit(this.selectedConversation);
@@ -63,7 +63,7 @@ export class AllConversationsComponent implements OnInit, OnDestroy {
   }
 
   private newConversationUpdate(conversationJson: string) {
-    let conversation = <conversation>JSON.parse(conversationJson);
+    let conversation = <Conversation>JSON.parse(conversationJson);
     
     let includingMe = false;
     conversation.participants.forEach(user =>{

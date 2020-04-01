@@ -2,8 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MyErrorStateMatcher } from 'src/app/submenu/register/register.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { category } from 'src/app/shared/models/category';
-import { forum } from 'src/app/shared/models/forum';
+import { Category } from 'src/app/shared/models/category';
+import { Forum } from 'src/app/shared/models/forum';
 import { ForumsService } from 'src/app/shared/services/forums.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class NewForumComponent implements OnInit {
   form: FormGroup;
   matcher = new MyErrorStateMatcher();
   failedRegistered: boolean = true;
-  category: category;
+  category: Category;
 
   constructor(fb: FormBuilder,
     private forumService: ForumsService,
@@ -34,7 +34,7 @@ export class NewForumComponent implements OnInit {
   }
 
   async create() {
-    let newForum = new forum();
+    let newForum = new Forum();
     newForum.name = this.form.controls['name'].value;
     newForum.description = this.form.controls['description'].value;
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ConstantsService } from 'src/app/shared/services/constants.service';
-import { topic } from 'src/app/shared/models/topic';
+import { Topic } from 'src/app/shared/models/topic';
 import { SocketioService } from 'src/app/shared/services/socketio.service';
 import { Subject, Observable } from 'rxjs';
 
@@ -46,7 +46,7 @@ export class TopicsService {
     this.topics[forumId].sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
   }
 
-  new(topic: topic) {
+  new(topic: Topic) {
     this.http.post(this.consts.serverUrl + "topic/", topic).toPromise().then(() => { });
   }
 
