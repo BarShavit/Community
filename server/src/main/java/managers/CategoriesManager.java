@@ -83,6 +83,8 @@ public class CategoriesManager {
 
         dal.getManager().getTransaction().commit();
 
+        socketIOSender.emitData(SocketIOConstants.DeletedForum, category);
+
         return true;
     }
 }
