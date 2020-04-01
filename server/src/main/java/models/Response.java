@@ -1,5 +1,8 @@
 package models;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -11,6 +14,7 @@ public class Response {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Topic topic;
     @ManyToOne
     private User creator;

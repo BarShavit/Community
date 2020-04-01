@@ -1,5 +1,8 @@
 package models;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -13,6 +16,7 @@ public class Topic {
     @ManyToOne
     private User creator;
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Forum forum;
     @Column(name = "publishDate")
     private Date publishDate;

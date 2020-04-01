@@ -14,7 +14,7 @@ public class Category {
     @Column(name = "name")
     private String name;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Forum> forums = new ArrayList<>();
 
     public int getId() {

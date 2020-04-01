@@ -13,9 +13,14 @@ public class ForumsManager {
     }
 
     public Forum getForum(int id){
-        return (Forum)dal.getManager().createQuery(
+        var resultList = dal.getManager().createQuery(
                 "SELECT f FROM Forum f WHERE f.id=:id")
-                .setParameter("id", id).getSingleResult();
+                .setParameter("id", id).getResultList();
+
+        if(resultList.isEmpty())
+            return null;
+
+        return (Forum)resultList.get(0);
     }
 
     public boolean addForum(int categoryId, Forum forum){

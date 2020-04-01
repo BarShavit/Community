@@ -55,4 +55,18 @@ public class CategoriesManager {
 
         return true;
     }
+
+    public boolean remove(int categoryId){
+        var category = dal.getManager().find(Category.class, categoryId);
+        if(category == null)
+            return false;
+
+        dal.getManager().getTransaction().begin();
+
+        dal.getManager().remove(category);
+
+        dal.getManager().getTransaction().commit();
+
+        return true;
+    }
 }

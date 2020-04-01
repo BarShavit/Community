@@ -6,6 +6,7 @@ import managers.CategoriesManager;
 import models.Category;
 
 import static io.javalin.apibuilder.ApiBuilder.*;
+import static java.lang.Integer.parseInt;
 
 public class CategoriesController {
     private Gson gson = new Gson();
@@ -19,6 +20,12 @@ public class CategoriesController {
             post("", ctx -> {
 
                 if (add(gson.fromJson(ctx.body(), Category.class)))
+                    ctx.status(200);
+                else
+                    ctx.status(400);
+            });
+            delete("/:id", ctx -> {
+                if (manager.remove(parseInt(ctx.pathParam("id"))))
                     ctx.status(200);
                 else
                     ctx.status(400);
