@@ -7,4 +7,5 @@ public class SocketIOConstants {
     public static String NewConversation = "new-conversation";
     public static String NewCategory = "new-category";
     public static String NewForum = "new-forum";
+    public static String DeletedCategory = "deleted-category";
 }

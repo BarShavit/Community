@@ -67,6 +67,8 @@ public class CategoriesManager {
 
         dal.getManager().getTransaction().commit();
 
+        socketIOSender.emitData(SocketIOConstants.DeletedCategory, category.getId());
+
         return true;
     }
 }
