@@ -26,6 +26,13 @@ public class ForumsController {
                     ctx.status(400);
                 }
             });
+            delete("/:categoryId/:forumId", ctx -> {
+                if(manager.delete(parseInt(ctx.pathParam("categoryId")),
+                        parseInt(ctx.pathParam("forumId"))))
+                    ctx.status(200);
+                else
+                    ctx.status(400);
+            });
         }));
     }
 

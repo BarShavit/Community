@@ -32,4 +32,13 @@ public class ForumsManager {
 
         return categoriesManager.addForumToCategory(categoryId, forum);
     }
+
+    public boolean delete(int categoryId, int forumId){
+        // Category holds the forum as OneToMany, so we need to remove
+        // the forum from the category's list first - or the forum won't be
+        // deleted.
+        // Because we set cascade to be all in OneToMany parameter,
+        // this forum will be deleted too with all it's children.
+        return categoriesManager.deleteForumFromCategory(categoryId, forumId);
+    }
 }

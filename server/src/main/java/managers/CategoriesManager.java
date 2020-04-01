@@ -71,4 +71,18 @@ public class CategoriesManager {
 
         return true;
     }
+
+    public boolean deleteForumFromCategory(int categoryId, int forumId){
+        var category = dal.getManager().find(Category.class, categoryId);
+        if(category == null)
+            return false;
+
+        dal.getManager().getTransaction().begin();
+
+        category.getForums().removeIf(forum -> forum.getId() == forumId);
+
+        dal.getManager().getTransaction().commit();
+
+        return true;
+    }
 }
