@@ -5,7 +5,7 @@ import { topic } from 'src/app/shared/models/topic';
 import { UsersService } from 'src/app/shared/services/users.service';
 import { TopicsService } from '../services/topics.service';
 import { createResult } from 'src/app/shared/new-message/new-message.component';
-import { ForumsService } from '../services/forums.service';
+import { ForumsService } from '../../shared/services/forums.service';
 
 @Component({
   selector: 'app-new-topic',

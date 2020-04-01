@@ -29,7 +29,7 @@ export class SubmenuComponent implements OnInit {
       width: '250px',
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().toPromise().then(result => {
       console.log('The dialog was closed');
     });
   }
@@ -39,7 +39,7 @@ export class SubmenuComponent implements OnInit {
       width: '250px',
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().toPromise().then(result => {
       console.log('The dialog was closed');
     });
   }

@@ -3,7 +3,7 @@ import { forum } from 'src/app/shared/models/forum';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TopicsService } from '../services/topics.service';
 import { topic } from 'src/app/shared/models/topic';
-import { ForumsService } from '../services/forums.service';
+import { ForumsService } from '../../shared/services/forums.service';
 import { UsersService } from 'src/app/shared/services/users.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';

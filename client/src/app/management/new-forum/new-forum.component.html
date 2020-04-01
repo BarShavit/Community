@@ -1,0 +1,24 @@
+<div class="subject-box">
+    הוספת פורום לקטגוריה {{category.name}}
+</div>
+
+<form>
+    <mat-form-field [formGroup]="form">
+        <mat-label>שם פורום</mat-label>
+        <input matInput [errorStateMatcher]="matcher" formControlName="name">
+        <mat-error *ngIf="form.controls['name'].invalid">
+            נא למלא שם פורום.
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field [formGroup]="form">
+        <mat-label>תיאור פורום</mat-label>
+        <textarea matInput class="description-input" [errorStateMatcher]="matcher" formControlName="description"></textarea>
+        <mat-error *ngIf="form.controls['description'].invalid">
+            נא למלא תיאור פורום.
+        </mat-error>
+    </mat-form-field>
+    <button mat-button cdkFocusInitial class="create-button" (click)="create()" [disabled]="!form.valid">יצירה</button>
+    <div *ngIf="!failedRegistered" class="warning">
+        כשל ביצירת פורום.
+    </div>
+</form>

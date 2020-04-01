@@ -10,9 +10,10 @@ import { AddCategoryComponent } from './add-category/add-category.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { NewForumComponent } from './new-forum/new-forum.component';
 
 @NgModule({
-  declarations: [ManageComponent, AddCategoryComponent],
+  declarations: [ManageComponent, AddCategoryComponent, NewForumComponent],
   imports: [
     CommonModule,
     SharedModule,

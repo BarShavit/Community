@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriesService } from 'src/app/shared/services/categories.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddCategoryComponent } from '../add-category/add-category.component';
+import { category } from 'src/app/shared/models/category';
+import { NewForumComponent } from '../new-forum/new-forum.component';
 
 @Component({
   selector: 'app-manage',
@@ -16,12 +18,24 @@ export class ManageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  createForum(cat: category) {
+    let config = new MatDialogConfig();
+    config.data = cat;
+    config.width = "300px";
+
+    const dialogRef = this.dialog.open(NewForumComponent, config);
+
+    dialogRef.afterClosed().toPromise().then(() => {
+      console.log('The dialog was closed');
+    });
+  }
+
   createCategory() {
     const dialogRef = this.dialog.open(AddCategoryComponent, {
       width: '250px',
     });
 
-    dialogRef.afterClosed().subscribe(() => {
+    dialogRef.afterClosed().toPromise().then(() => {
       console.log('The dialog was closed');
     });
   }

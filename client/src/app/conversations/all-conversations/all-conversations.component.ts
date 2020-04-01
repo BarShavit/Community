@@ -57,7 +57,7 @@ export class AllConversationsComponent implements OnInit, OnDestroy {
       width: '250px',
     });
 
-    dialogRef.afterClosed().subscribe(() => {
+    dialogRef.afterClosed().toPromise().then(() => {
       console.log('The dialog was closed');
     });
   }
