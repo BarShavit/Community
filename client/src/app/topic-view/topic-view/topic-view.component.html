@@ -12,6 +12,9 @@
         <div class="left-container">
             <button mat-raised-button color="primary" class="new-topic-button" (click)="newResponse()" [disabled]="!userService.connected">תגובה
                 חדשה</button>
+            <mat-icon class="delete-topic-icon" *ngIf="ableToDeleteTopic()" (click)="deleteTopic()">
+                delete_outline
+            </mat-icon>
         </div>
     </mat-toolbar-row>
 </mat-toolbar>
