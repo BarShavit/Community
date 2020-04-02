@@ -4,6 +4,8 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddCategoryComponent } from '../add-category/add-category.component';
 import { Category } from 'src/app/shared/models/category';
 import { NewForumComponent } from '../new-forum/new-forum.component';
+import { Forum } from 'src/app/shared/models/forum';
+import { ForumsService } from 'src/app/shared/services/forums.service';
 
 @Component({
   selector: 'app-manage',
@@ -13,6 +15,7 @@ import { NewForumComponent } from '../new-forum/new-forum.component';
 export class ManageComponent implements OnInit {
 
   constructor(public categoriesService: CategoriesService,
+    private forumService : ForumsService,
     private dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -38,5 +41,9 @@ export class ManageComponent implements OnInit {
     dialogRef.afterClosed().toPromise().then(() => {
       console.log('The dialog was closed');
     });
+  }
+
+  deleteForum(forum: Forum, category: Category) {
+    this.forumService.delete(category, forum);
   }
 }

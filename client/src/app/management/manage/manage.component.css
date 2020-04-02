@@ -18,7 +18,7 @@
 .forum-logo {
     height: 15px;
     width: 15px;
-    vertical-align: bottom;
+    vertical-align: middle;
 }
 
 .clickable {
@@ -49,5 +49,11 @@
     height: 40px;
     width: 40px;
     color: rgb(0, 235, 0);
+    cursor: pointer;
+}
+
+.remove-forum-icon {
+    color: red;
+    vertical-align: middle;
     cursor: pointer;
 }

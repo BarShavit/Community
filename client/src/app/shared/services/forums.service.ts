@@ -29,4 +29,9 @@ export class ForumsService {
     return this.http.post(this.consts.serverUrl + "forum/" + cat.id, forum).toPromise()
       .then(() => { return true; }).catch(() => { return false; });
   }
+
+  async delete(cat: Category, forum: Forum): Promise<boolean> {
+    return this.http.delete(this.consts.serverUrl + "forum/" + cat.id + "/" + forum.id).toPromise()
+      .then(() => { return true; }).catch(() => { return false; });
+  }
 }
