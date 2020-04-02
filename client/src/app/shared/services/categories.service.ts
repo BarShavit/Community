@@ -20,6 +20,9 @@ export class CategoriesService {
 
     socketIO.consume(constants.newCategoryKey).subscribe(this.newCategoryUpdate.bind(this));
     socketIO.consume(constants.newForumKey).subscribe(this.newForumUpdate.bind(this));
+
+    socketIO.consume(constants.deletedCategoryKey).subscribe(this.deletedCategoryUpdate.bind(this));
+    socketIO.consume(constants.deletedForumKey).subscribe(this.deletedForumUpdate.bind(this));
   }
 
   private newCategoryUpdate(categoryString: string) {
@@ -38,6 +41,28 @@ export class CategoriesService {
     }
 
     this.categories.push(category);
+  }
+
+  private deletedCategoryUpdate(categoryString: string) {
+    let categoryId = JSON.parse(categoryString);
+
+    for (let i = 0; i < this.categories.length; i++) {
+      if (this.categories[i].id == categoryId) {
+        this.categories.splice(i, 1);
+        return;
+      }
+    }
+  }
+
+  private deletedForumUpdate(categoryString: string) {
+    let category = JSON.parse(categoryString);
+
+    for (let i = 0; i < this.categories.length; i++) {
+      if (this.categories[i].id == category.id) {
+        this.categories[i] = category;
+        return;
+      }
+    }
   }
 
   async add(category: Category): Promise<boolean> {
