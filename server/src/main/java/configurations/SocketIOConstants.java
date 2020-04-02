@@ -9,4 +9,6 @@ public class SocketIOConstants {
     public static String NewForum = "new-forum";
     public static String DeletedCategory = "deleted-category";
     public static String DeletedForum = "deleted-forum";
+    public static String DeletedTopic = "deleted-topic";
+    public static String DeletedResponse = "deleted-response";
 }
