@@ -57,3 +57,10 @@
     vertical-align: middle;
     cursor: pointer;
 }
+
+.delete-category-icon {
+    color: red;
+    vertical-align: middle;
+    cursor: pointer;
+    float: left;
+}

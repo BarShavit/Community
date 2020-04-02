@@ -47,4 +47,12 @@ export class CategoriesService {
       return false;
     });
   }
+
+  async delete(category: Category): Promise<boolean> {
+    return this.http.delete(this.constants.serverUrl + "category/" + category.id).toPromise().then(() => {
+      return true;
+    }).catch(() => {
+      return false;
+    });
+  }
 }

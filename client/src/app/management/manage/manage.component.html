@@ -8,6 +8,7 @@
             </svg>
         </div>
         <mat-card-title class="nowrap">{{category.name}}</mat-card-title>
+        <mat-icon class="delete-category-icon" (click)="deleteCategory(category)">delete_outline</mat-icon>
     </mat-card-header>
     <mat-card-content>
         <div *ngFor="let forum of category.forums">

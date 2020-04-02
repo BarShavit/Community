@@ -15,7 +15,7 @@ import { ForumsService } from 'src/app/shared/services/forums.service';
 export class ManageComponent implements OnInit {
 
   constructor(public categoriesService: CategoriesService,
-    private forumService : ForumsService,
+    private forumService: ForumsService,
     private dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -45,5 +45,9 @@ export class ManageComponent implements OnInit {
 
   deleteForum(forum: Forum, category: Category) {
     this.forumService.delete(category, forum);
+  }
+
+  deleteCategory(category: Category) {
+    this.categoriesService.delete(category);
   }
 }
