@@ -23,6 +23,12 @@ public class ResponsesController {
                 else
                     ctx.status(400);
             }));
+            delete("/:id", ctx -> {
+                if (manager.delete(parseInt(ctx.pathParam("id"))))
+                    ctx.status(200);
+                else
+                    ctx.status(400);
+            });
         }));
     }
 

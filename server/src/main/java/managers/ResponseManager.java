@@ -3,6 +3,7 @@ package managers;
 import configurations.SocketIOConstants;
 import database.DAL;
 import models.Response;
+import models.Topic;
 import socketIO.ISocketIOSender;
 
 import java.util.List;
@@ -42,6 +43,20 @@ public class ResponseManager {
         dal.getManager().getTransaction().commit();
 
         socketIOSender.emitData(SocketIOConstants.NewResponseKey, response);
+
+        return true;
+    }
+
+    public boolean delete(int responseId){
+        var response = dal.getManager().find(Response.class, responseId);
+        if(response == null)
+            return false;
+
+        dal.getManager().getTransaction().begin();
+
+        dal.getManager().remove(response);
+
+        dal.getManager().getTransaction().commit();
 
         return true;
     }
