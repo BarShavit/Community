@@ -51,8 +51,27 @@ public class TopicsManager {
     }
 
     public Topic getTopic(int topicId){
-        return (Topic)dal.getManager().createQuery(
+         var result = dal.getManager().createQuery(
                 "SELECT t FROM Topic t WHERE t.id=:id")
-                .setParameter("id", topicId).getSingleResult();
+                .setParameter("id", topicId).getResultList();
+
+         if(result.isEmpty())
+             return null;
+
+         return (Topic)result.get(0);
+    }
+
+    public boolean delete(int topicId){
+        var topic = dal.getManager().find(Topic.class, topicId);
+        if(topic == null)
+            return false;
+
+        dal.getManager().getTransaction().begin();
+
+        dal.getManager().remove(topic);
+
+        dal.getManager().getTransaction().commit();
+
+        return true;
     }
 }
