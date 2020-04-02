@@ -9,11 +9,12 @@ import { StorageModule } from '@ngx-pwa/local-storage';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { WarnDialogComponent } from './warn-dialog/warn-dialog.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
 
 @NgModule({
-  declarations: [NewMessageComponent],
+  declarations: [NewMessageComponent, WarnDialogComponent],
   imports: [
     CommonModule,
     HttpClientModule,

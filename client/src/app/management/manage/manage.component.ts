@@ -6,6 +6,7 @@ import { Category } from 'src/app/shared/models/category';
 import { NewForumComponent } from '../new-forum/new-forum.component';
 import { Forum } from 'src/app/shared/models/forum';
 import { ForumsService } from 'src/app/shared/services/forums.service';
+import { WarnDialogComponent } from 'src/app/shared/warn-dialog/warn-dialog.component';
 
 @Component({
   selector: 'app-manage',
@@ -44,10 +45,26 @@ export class ManageComponent implements OnInit {
   }
 
   deleteForum(forum: Forum, category: Category) {
-    this.forumService.delete(category, forum);
+    const dialogRef = this.dialog.open(WarnDialogComponent, {
+      width: '250px',
+    });
+
+    dialogRef.afterClosed().toPromise().then(result => {
+      if (result) {
+        this.forumService.delete(category, forum);
+      }
+    });
   }
 
   deleteCategory(category: Category) {
-    this.categoriesService.delete(category);
+    const dialogRef = this.dialog.open(WarnDialogComponent, {
+      width: '250px',
+    });
+
+    dialogRef.afterClosed().toPromise().then(result => {
+      if (result) {
+        this.categoriesService.delete(category);
+      }
+    });
   }
 }
