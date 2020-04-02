@@ -1,4 +1,4 @@
-<mat-toolbar *ngIf="topic!=null">
+<mat-toolbar class="main-background" *ngIf="topic!=null">
     <mat-toolbar-row class="subject-row">
         {{topic.subject}}
         <div class="left-container date">
@@ -10,14 +10,13 @@
         <span>{{topic.creator.username}}</span>
 
         <div class="left-container">
-            <button mat-raised-button color="primary" class="new-topic-button" (click)="newResponse()"
-                [disabled]="!userService.connected">תגובה
+            <button mat-raised-button color="primary" class="new-topic-button" (click)="newResponse()" [disabled]="!userService.connected">תגובה
                 חדשה</button>
         </div>
     </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-card *ngIf="topic!=null">
+<mat-card *ngIf="topic!=null" class="main-background">
     <mat-card-content>
         <div [innerHTML]="topic.body"></div>
     </mat-card-content>
@@ -37,7 +36,7 @@
             </mat-toolbar-row>
         </mat-toolbar>
 
-        <mat-card>
+        <mat-card class="main-background">
             <mat-card-content>
                 <div [innerHTML]="response.body"></div>
             </mat-card-content>
