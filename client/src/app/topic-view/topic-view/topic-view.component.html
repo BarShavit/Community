@@ -35,6 +35,10 @@
                 <span>{{response.creator.username}}</span>
                 <div class="left-container date">
                     {{topic.publishDate.toLocaleString()}}
+
+                    <mat-icon class="delete-topic-icon" *ngIf="ableToDeleteResponse(response)" (click)="deleteResponse(response)">
+                        delete_outline
+                    </mat-icon>
                 </div>
             </mat-toolbar-row>
         </mat-toolbar>

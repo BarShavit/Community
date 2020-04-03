@@ -6,6 +6,7 @@ import { TopicsService } from '../services/topics.service';
 import { UsersService } from 'src/app/shared/services/users.service';
 import { MatDialog } from '@angular/material/dialog';
 import { WarnDialogComponent } from 'src/app/shared/warn-dialog/warn-dialog.component';
+import { Response } from 'src/app/shared/models/response';
 
 @Component({
   selector: 'app-topic-view',
@@ -36,6 +37,11 @@ export class TopicViewComponent implements OnInit {
       this.topic.creator.id == this.userService.loggedUser.id);
   }
 
+  ableToDeleteResponse(response: Response) {
+    return this.userService.loggedUser != null && (this.userService.loggedUser.isAdmin ||
+      response.creator.id == this.userService.loggedUser.id);
+  }
+
   deleteTopic() {
     const dialogRef = this.dialog.open(WarnDialogComponent, {
       width: '250px',
@@ -48,6 +54,18 @@ export class TopicViewComponent implements OnInit {
         if (result) {
           this.router.navigate(['/forum/', this.topic.forum.id]);
         }
+      }
+    });
+  }
+
+  deleteResponse(response: Response) {
+    const dialogRef = this.dialog.open(WarnDialogComponent, {
+      width: '250px',
+    });
+
+    dialogRef.afterClosed().toPromise().then(async result => {
+      if (result) {
+        this.responseService.delete(response);
       }
     });
   }

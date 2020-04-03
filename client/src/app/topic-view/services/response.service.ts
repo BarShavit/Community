@@ -38,4 +38,9 @@ export class ResponseService {
   add(res: Response) {
     this.http.post(this.consts.serverUrl + "response/", res).toPromise().then(() => { });
   }
+
+  async delete(response: Response): Promise<boolean> {
+    return this.http.delete(this.consts.serverUrl + "response/" + response.id)
+      .toPromise().then(() => { return true }).catch(() => { return false; });
+  }
 }
