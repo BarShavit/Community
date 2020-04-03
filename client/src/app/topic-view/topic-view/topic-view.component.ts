@@ -7,6 +7,7 @@ import { UsersService } from 'src/app/shared/services/users.service';
 import { MatDialog } from '@angular/material/dialog';
 import { WarnDialogComponent } from 'src/app/shared/warn-dialog/warn-dialog.component';
 import { Response } from 'src/app/shared/models/response';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-topic-view',
@@ -68,5 +69,9 @@ export class TopicViewComponent implements OnInit {
         this.responseService.delete(response);
       }
     });
+  }
+
+  convertDateToString(date: Date): string {
+    return moment(date).format("D/M/YYYY H:mm:ss");
   }
 }

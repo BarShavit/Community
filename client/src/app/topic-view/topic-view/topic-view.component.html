@@ -2,7 +2,7 @@
     <mat-toolbar-row class="subject-row">
         {{topic.subject}}
         <div class="left-container date">
-            {{topic.publishDate.toLocaleString()}}
+            {{convertDateToString(topic.publishDate)}}
         </div>
     </mat-toolbar-row>
     <mat-toolbar-row class="description-row">
@@ -34,7 +34,7 @@
                 <img class="response-avatar" src="assets/default_avatar.png">
                 <span>{{response.creator.username}}</span>
                 <div class="left-container date">
-                    {{topic.publishDate.toLocaleString()}}
+                    {{convertDateToString(topic.publishDate)}}
 
                     <mat-icon class="delete-topic-icon" *ngIf="ableToDeleteResponse(response)" (click)="deleteResponse(response)">
                         delete_outline

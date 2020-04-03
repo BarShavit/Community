@@ -1,5 +1,4 @@
-<button mat-raised-button color="primary" class="new-topic-button" (click)="newTopic()"
-    [disabled]="!userService.connected">צור נושא חדש</button>
+<button mat-raised-button color="primary" class="new-topic-button" (click)="newTopic()" [disabled]="!userService.connected">צור נושא חדש</button>
 
 <mat-toolbar class="main-background" *ngIf="forum!=null">
     <mat-toolbar-row class="forum-row">
@@ -11,8 +10,7 @@
 </mat-toolbar>
 
 <div class="topics-container">
-    <table *ngIf="forum!=null" mat-table [dataSource]="dataSource" class="mat-elevation-z8 topics-table"
-        [trackBy]="trackById">
+    <table *ngIf="forum!=null" mat-table [dataSource]="dataSource" class="mat-elevation-z8 topics-table" [trackBy]="trackById">
         <ng-container matColumnDef="creator">
             <th mat-header-cell *matHeaderCellDef> יוצר </th>
             <td mat-cell *matCellDef="let element"> {{element.creator.username}} </td>
@@ -23,7 +21,7 @@
         </ng-container>
         <ng-container matColumnDef="publishdate">
             <th mat-header-cell *matHeaderCellDef> תאריך יצירה </th>
-            <td mat-cell *matCellDef="let element"> {{element.publishDate}} </td>
+            <td mat-cell *matCellDef="let element"> {{convertDateToString(element.publishDate)}} </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -31,7 +29,5 @@
     </table>
 </div>
 
-<mat-paginator class="main-background" [pageSize]="pageSize"
- [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true" [length]="totalSize"
-    [pageIndex]="currentPage" (page)="handlePage($event)">
+<mat-paginator class="main-background" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true" [length]="totalSize" [pageIndex]="currentPage" (page)="handlePage($event)">
 </mat-paginator>

@@ -49,6 +49,6 @@ export class ConversationChatComponent implements OnInit {
   }
 
   convertDateToString(date:Date) : string{
-    return moment(date).format("D/M/YYYY H:m:ss");
+    return moment(date).format("D/M/YYYY H:mm:ss");
   }
 }

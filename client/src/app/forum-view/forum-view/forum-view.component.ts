@@ -7,6 +7,7 @@ import { ForumsService } from '../../shared/services/forums.service';
 import { UsersService } from 'src/app/shared/services/users.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-forum-view',
@@ -75,5 +76,9 @@ export class ForumViewComponent implements OnInit, OnDestroy {
     let start = this.currentPage * this.pageSize;
     let part = this.topicService.topics[this.forum.id].slice(start, end);
     this.dataSource.data = part;
+  }
+
+  convertDateToString(date: Date): string {
+    return moment(date).format("D/M/YYYY H:mm:ss");
   }
 }
