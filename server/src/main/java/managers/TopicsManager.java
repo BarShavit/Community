@@ -51,14 +51,14 @@ public class TopicsManager {
     }
 
     public Topic getTopic(int topicId){
-         var result = dal.getManager().createQuery(
-                "SELECT t FROM Topic t WHERE t.id=:id")
-                .setParameter("id", topicId).getResultList();
-
-         if(result.isEmpty())
-             return null;
-
-         return (Topic)result.get(0);
+        try{
+            return (Topic)dal.getManager().createQuery(
+                    "SELECT t FROM Topic t WHERE t.id=:id")
+                    .setParameter("id", topicId).getSingleResult();
+        } catch (Exception e){
+            System.out.println("Failed to get topic " + topicId);
+            return null;
+        }
     }
 
     public boolean delete(int topicId){

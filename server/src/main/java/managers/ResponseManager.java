@@ -58,7 +58,7 @@ public class ResponseManager {
 
         dal.getManager().getTransaction().commit();
 
-        socketIOSender.emitData(SocketIOConstants.DeletedResponse, responseId);
+        socketIOSender.emitData(SocketIOConstants.DeletedResponse, response);
 
         return true;
     }

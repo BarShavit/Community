@@ -12,19 +12,35 @@ export class ResponseService {
   responses = {};
 
   constructor(private http: HttpClient, private consts: ConstantsService,
-    socketio: SocketioService) { 
-      socketio.consume(consts.newResponseKey).subscribe(this.newResponse.bind(this));
-    }
+    socketio: SocketioService) {
+    socketio.consume(consts.newResponseKey).subscribe(this.newResponse.bind(this));
+    socketio.consume(consts.deletedResponseKey).subscribe(this.deletedResponse.bind(this));
+  }
 
-  private newResponse(responseJson:string) {
+  private newResponse(responseJson: string) {
     let response = JSON.parse(responseJson);
 
-    if(this.responses[response.topic.id] == null){
+    if (this.responses[response.topic.id] == null) {
       this.loadTopic(response.topic.id);
       return;
     }
 
     this.responses[response.topic.id].push(response);
+  }
+
+  private deletedResponse(responseJson: string) {
+    let response = JSON.parse(responseJson);
+
+    if (this.responses[response.topic.id] == null) {
+      return;
+    }
+
+    for (let i = 0; i < this.responses[response.topic.id].length; i++) {
+      if (this.responses[response.topic.id][i].id == response.id) {
+        this.responses[response.topic.id].splice(i, 1);
+        return;
+      }
+    }
   }
 
   loadTopic(topicId: number) {
