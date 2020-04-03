@@ -11,7 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { WarnDialogComponent } from './warn-dialog/warn-dialog.component';
 
-const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
+const config: SocketIoConfig = { url: 'http://localhost:8080', options: { reconnect: true } };
 
 @NgModule({
   declarations: [NewMessageComponent, WarnDialogComponent],
@@ -29,7 +29,7 @@ const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
     ReactiveFormsModule,
     SocketIoModule.forRoot(config)
   ],
-  exports:[
+  exports: [
     NewMessageComponent
   ],
   providers: [

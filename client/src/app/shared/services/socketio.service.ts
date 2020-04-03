@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class SocketioService {
 
-  constructor(private socket:Socket) { }
+  constructor(private socket:Socket) {
+  }
 
   consume<T>(key:string) : Observable<T>{
     return this.socket.fromEvent(key);

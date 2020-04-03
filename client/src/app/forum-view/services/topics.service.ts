@@ -16,9 +16,10 @@ export class TopicsService {
   constructor(private http: HttpClient, private consts: ConstantsService,
     socketIO: SocketioService) {
     socketIO.consume(consts.newTopicKey).subscribe(this.newTopic.bind(this));
+    socketIO.consume(consts.deletedTopicKey).subscribe(this.deletedTopic.bind(this));
   }
 
-  newTopic(topicJson: string) {
+  private newTopic(topicJson: string) {
     let topic = JSON.parse(topicJson);
     if (this.topics[topic.forum.id] == null) {
       this.loadForum(topic.forum.id);
@@ -30,6 +31,23 @@ export class TopicsService {
     this.sort(topic.forum.id);
 
     this.topicsUpdatedNotify.next(this.topics[topic.forum.id]);
+  }
+
+  private deletedTopic(topicJson) {
+    let topic = JSON.parse(topicJson);
+    if (this.topics[topic.forum.id] == null) {
+      return;
+    }
+
+    for (let i = 0; i < this.topics[topic.forum.id].length; i++) {
+      if (this.topics[topic.forum.id][i].id == topic.id) {
+        this.topics[topic.forum.id].splice(i, 1);
+        this.sort(topic.forum.id);
+        this.topicsUpdatedNotify.next(this.topics[topic.forum.id]);
+
+        return;
+      }
+    }
   }
 
   loadForum(forumId: number) {
@@ -50,7 +68,7 @@ export class TopicsService {
     this.http.post(this.consts.serverUrl + "topic/", topic).toPromise().then(() => { });
   }
 
-  updates() : Observable<any>{
+  updates(): Observable<any> {
     return this.topicsUpdatedNotify.asObservable();
   }
 }

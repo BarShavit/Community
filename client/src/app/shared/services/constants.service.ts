@@ -14,6 +14,8 @@ export class ConstantsService {
   newForumKey = "new-forum";
   deletedCategoryKey = "deleted-category";
   deletedForumKey = "deleted-forum";
+  deletedTopicKey = "deleted-topic";
+  deletedResponseKey = "deleted-response";
 
   constructor() { }
 }

@@ -72,7 +72,7 @@ public class TopicsManager {
 
         dal.getManager().getTransaction().commit();
 
-        socketIOSender.emitData(SocketIOConstants.DeletedTopic, topicId);
+        socketIOSender.emitData(SocketIOConstants.DeletedTopic, topic);
 
         return true;
     }
