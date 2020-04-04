@@ -46,6 +46,7 @@
     padding: 5px;
     margin-bottom: 10px;
     display: inline-block;
+    color: white;
 }
 
 .other-message {
@@ -56,6 +57,7 @@
     padding: 5px;
     margin-bottom: 10px;
     display: inline-block;
+    color: white;
 }
 
 .message-container {
