@@ -1,3 +1,5 @@
+insert into community.users values (1,"bla@gmail.com",true,"�iv�A���M�߱g��s�K��o*�H�","admin");
+
 insert into community.categories values (1,"דיונים");
 insert into community.categories values (2,"לימודים והשכלה");
 insert into community.categories values (3,"תחביבים");
